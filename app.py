@@ -54,3 +54,31 @@ st.markdown("""
     --accent-amber: #f59e0b;
     --accent-orange: #f97316;
     --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --gradient-hero: linear-gradient(135deg, #06090f 0%, #0f172a 25%, #1e1b4b 50%, #0f172a 75%, #06090f 100%);
+    --gradient-card: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 27, 75, 0.4));
+    --shadow-glow: 0 0 40px rgba(0, 212, 255, 0.06);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Global overrides ──────────────────────────────────────────────────────── */
+html, body, [data-testid="stAppViewContainer"], .main {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    color: var(--text-primary) !important;
+}
+
+[data-testid="stAppViewContainer"] {
+    background: var(--gradient-hero) !important;
+    background-attachment: fixed !important;
+}
+
+/* Animated background orbs */
+[data-testid="stAppViewContainer"]::before {
+    content: '';
+    position: fixed;
+    top: -40%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
