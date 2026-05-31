@@ -727,3 +727,31 @@ footer { visibility: hidden; }
     background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
+    background: rgba(100, 160, 255, 0.15);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 160, 255, 0.25);
+}
+
+/* ── Warning / Info / Success boxes ────────────────────────────────────────── */
+.stAlert {
+    border-radius: 14px !important;
+    backdrop-filter: blur(12px) !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+
+# ---------------------------------------------------------------------------
+# Session state initialisation
+# ---------------------------------------------------------------------------
+if "history" not in st.session_state:
+    st.session_state.history = []
+if "comparison_results" not in st.session_state:
+    st.session_state.comparison_results = None
+
+# ---------------------------------------------------------------------------
+# Pre-populate demo data on first load
+# ---------------------------------------------------------------------------
