@@ -1484,3 +1484,31 @@ elif "Dashboard" in page:
         st.markdown(f'<div class="metric-card"><div class="metric-value" style="-webkit-text-fill-color:#ef4444;">{demo_stats["fake"]:,}</div><div class="metric-label">Fake Articles</div></div>', unsafe_allow_html=True)
     with s4:
         st.markdown(f'<div class="metric-card"><div class="metric-value">{demo_stats["avg_length"]:,.0f}</div><div class="metric-label">Avg. Length (chars)</div></div>', unsafe_allow_html=True)
+
+    st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+
+    tab1, tab2, tab3 = st.tabs(["📊 Distribution", "📏 Text Analysis", "📐 Model Performance"])
+
+    with tab1:
+        # Donut chart
+        fig = go.Figure(go.Pie(
+            labels=["Real News", "Fake News"],
+            values=[demo_stats["real"], demo_stats["fake"]],
+            hole=0.6,
+            marker=dict(
+                colors=["#10b981", "#ef4444"],
+                line=dict(color="#06090f", width=4),
+            ),
+            textinfo="label+percent",
+            textfont=dict(color="#f1f5f9", size=14, family="Inter"),
+            hovertemplate="<b>%{label}</b><br>Count: %{value:,}<br>Percentage: %{percent}<extra></extra>",
+        ))
+        fig.update_layout(
+            title="Dataset Label Distribution",
+            height=420,
+            showlegend=False,
+            annotations=[dict(
+                text=f"<b>{demo_stats['total']:,}</b><br><span style='font-size:12px;color:#94a3b8;'>articles</span>",
+                x=0.5, y=0.5, font_size=24, font_color="#f1f5f9",
+                showarrow=False, font=dict(family="Inter"),
+            )],
