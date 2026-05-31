@@ -52,3 +52,16 @@ def _demo_predict(text: str) -> dict:
 
     # Count fake-sounding keywords
     lower = text.lower()
+    fake_score = sum(1 for kw in _FAKE_KEYWORDS if kw in lower)
+
+    # Use hash for determinism + slight randomness feel
+    h = int(hashlib.md5(cleaned.encode()).hexdigest()[:8], 16)
+    base_fake = 0.25 + (h % 1000) / 2500  # 0.25 – 0.65 baseline
+
+    # Adjust by keyword hits
+    base_fake += fake_score * 0.07
+    base_fake = min(base_fake, 0.98)
+
+    # Longer, well-structured texts lean toward "REAL"
+    word_count = len(cleaned.split())
+    if word_count > 150:
