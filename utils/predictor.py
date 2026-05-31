@@ -65,3 +65,17 @@ def _demo_predict(text: str) -> dict:
     # Longer, well-structured texts lean toward "REAL"
     word_count = len(cleaned.split())
     if word_count > 150:
+        base_fake -= 0.15
+    elif word_count > 80:
+        base_fake -= 0.08
+    elif word_count < 20:
+        base_fake += 0.1
+
+    base_fake = max(0.04, min(0.96, base_fake))
+
+    fake_prob = round(base_fake, 4)
+    real_prob = round(1 - fake_prob, 4)
+
+    if real_prob >= fake_prob:
+        label = "REAL"
+        confidence = real_prob
