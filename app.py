@@ -699,3 +699,31 @@ div[data-testid="stDownloadButton"] > button:hover {
     font-weight: 600;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    margin: 12px auto;
+    width: fit-content;
+}
+.status-live::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-green);
+    animation: pulse 2s ease-in-out infinite;
+    box-shadow: 0 0 8px var(--accent-green);
+}
+
+/* ── Hide Streamlit defaults ───────────────────────────────────────────────── */
+#MainMenu { visibility: hidden; }
+header { visibility: hidden; }
+footer { visibility: hidden; }
+.stDeployButton { display: none !important; }
+
+/* ── Scrollbar ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
