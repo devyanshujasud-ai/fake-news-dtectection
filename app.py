@@ -867,3 +867,31 @@ with st.sidebar:
     <div class="sidebar-logo">
         <span class="logo-icon">🛡️</span>
     </div>
+    """, unsafe_allow_html=True)
+    st.markdown('<p class="sidebar-title">Fake News Detector</p>', unsafe_allow_html=True)
+    st.markdown('<p class="sidebar-sub">AI-Powered Verification</p>', unsafe_allow_html=True)
+
+    # Demo mode indicator
+    try:
+        from utils.predictor import is_demo_mode
+        if is_demo_mode():
+            st.markdown('<div class="demo-badge" style="margin:0 auto 16px auto;display:flex;width:fit-content;">⚡ Demo Mode</div>', unsafe_allow_html=True)
+        else:
+            st.markdown('<div class="status-live">Model Active</div>', unsafe_allow_html=True)
+    except Exception:
+        st.markdown('<div class="demo-badge" style="margin:0 auto 16px auto;display:flex;width:fit-content;">⚡ Demo Mode</div>', unsafe_allow_html=True)
+
+    st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+
+    page = st.radio(
+        "Navigation",
+        [
+            "🏠  Home",
+            "🔗  URL Analyzer",
+            "📊  Model Comparison",
+            "📈  Dashboard",
+            "📜  History",
+        ],
+        label_visibility="collapsed",
+    )
+
