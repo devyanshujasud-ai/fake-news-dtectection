@@ -1119,3 +1119,31 @@ if "Home" in page:
         st.markdown("""
         <div class="glass-card" style="text-align:center;">
             <div style="font-size:2rem;margin-bottom:10px;">🔄</div>
+            <div style="font-size:0.95rem;font-weight:700;color:#f1f5f9;margin-bottom:6px;">2. NLP Processing</div>
+            <div style="font-size:0.82rem;color:#64748b;">TF-IDF vectorization extracts key linguistic features</div>
+        </div>
+        """, unsafe_allow_html=True)
+    with hw3:
+        st.markdown("""
+        <div class="glass-card" style="text-align:center;">
+            <div style="font-size:2rem;margin-bottom:10px;">✅</div>
+            <div style="font-size:0.95rem;font-weight:700;color:#f1f5f9;margin-bottom:6px;">3. Classification</div>
+            <div style="font-size:0.82rem;color:#64748b;">ML model classifies with confidence probability score</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PAGE: URL ANALYZER
+# ═══════════════════════════════════════════════════════════════════════════
+elif "URL" in page:
+    st.markdown('<h1 class="hero-title">🔗 URL Analyzer</h1>', unsafe_allow_html=True)
+    st.markdown(
+        '<p class="hero-subtitle">'
+        'Paste a news article URL and we\'ll extract & analyze it automatically'
+        '</p>',
+        unsafe_allow_html=True,
+    )
+    st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+
+    url_input = st.text_input(
