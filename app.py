@@ -1260,3 +1260,31 @@ elif "Comparison" in page:
                 "precision": 0.9612,
                 "recall": 0.9658,
                 "f1": 0.9635,
+                "roc_auc": 0.9921,
+                "roc_fpr": np.array([0.0, 0.01, 0.02, 0.05, 0.1, 0.15, 0.2, 0.5, 1.0]),
+                "roc_tpr": np.array([0.0, 0.75, 0.88, 0.93, 0.96, 0.975, 0.985, 0.998, 1.0]),
+                "confusion_matrix": np.array([[4750, 190], [168, 4892]]),
+                "classification_report": (
+                    "              precision    recall  f1-score   support\n\n"
+                    "        FAKE       0.97      0.96      0.96      4940\n"
+                    "        REAL       0.96      0.97      0.96      5060\n\n"
+                    "    accuracy                           0.96     10000\n"
+                    "   macro avg       0.96      0.96      0.96     10000\n"
+                    "weighted avg       0.96      0.96      0.96     10000\n"
+                ),
+            },
+            "Random Forest": {
+                "accuracy": 0.9487,
+                "precision": 0.9445,
+                "recall": 0.9531,
+                "f1": 0.9488,
+                "roc_auc": 0.9879,
+                "roc_fpr": np.array([0.0, 0.015, 0.03, 0.06, 0.12, 0.18, 0.25, 0.55, 1.0]),
+                "roc_tpr": np.array([0.0, 0.70, 0.84, 0.91, 0.95, 0.97, 0.98, 0.995, 1.0]),
+                "confusion_matrix": np.array([[4670, 270], [243, 4817]]),
+                "classification_report": (
+                    "              precision    recall  f1-score   support\n\n"
+                    "        FAKE       0.95      0.95      0.95      4940\n"
+                    "        REAL       0.95      0.95      0.95      5060\n\n"
+                    "    accuracy                           0.95     10000\n"
+                    "   macro avg       0.95      0.95      0.95     10000\n"
