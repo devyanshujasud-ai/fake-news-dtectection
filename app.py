@@ -1512,3 +1512,31 @@ elif "Dashboard" in page:
                 x=0.5, y=0.5, font_size=24, font_color="#f1f5f9",
                 showarrow=False, font=dict(family="Inter"),
             )],
+        )
+        st.plotly_chart(dark_fig(fig), use_container_width=True)
+
+        # Category breakdown
+        st.markdown("")
+        cat_col1, cat_col2 = st.columns(2)
+        with cat_col1:
+            categories = ["Politics", "World", "Business", "Technology", "Science"]
+            real_cats = [4283, 5354, 3855, 4283, 3642]
+            fig = go.Figure(go.Bar(
+                x=categories, y=real_cats,
+                marker=dict(color="#10b981", line=dict(width=0)),
+                text=[f"{v:,}" for v in real_cats],
+                textposition="outside",
+                textfont=dict(color="#94a3b8", size=11),
+            ))
+            fig.update_layout(title="Real News by Category", height=320, yaxis=dict(title="Count"))
+            st.plotly_chart(dark_fig(fig), use_container_width=True)
+
+        with cat_col2:
+            fake_cats = [6105, 4696, 3753, 5166, 3761]
+            fig = go.Figure(go.Bar(
+                x=categories, y=fake_cats,
+                marker=dict(color="#ef4444", line=dict(width=0)),
+                text=[f"{v:,}" for v in fake_cats],
+                textposition="outside",
+                textfont=dict(color="#94a3b8", size=11),
+            ))
