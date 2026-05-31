@@ -160,3 +160,16 @@ def predict_from_url(url: str) -> dict:
         if not body.strip():
             return {
                 "label": "ERROR",
+                "confidence": 0.0,
+                "probabilities": {"REAL": 0.0, "FAKE": 0.0},
+                "title": title,
+                "text": "",
+                "authors": authors,
+                "error": "Could not extract article text from this URL.",
+            }
+
+        result = predict_news(body[:5000])
+        result["title"] = title
+        result["text"] = body[:5000]
+        result["authors"] = authors
+        return result
