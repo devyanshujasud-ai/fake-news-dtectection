@@ -92,3 +92,17 @@ def _demo_predict(text: str) -> dict:
         },
     }
 
+
+# ---------------------------------------------------------------------------
+# Core prediction
+# ---------------------------------------------------------------------------
+def predict_news(text: str) -> dict:
+    """
+    Predict whether *text* is REAL or FAKE.
+
+    Returns
+    -------
+    dict with keys:
+        label   – "REAL" | "FAKE"
+        confidence – float 0-1 (probability of the predicted class)
+        probabilities – dict {"REAL": float, "FAKE": float}
