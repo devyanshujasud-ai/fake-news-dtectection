@@ -119,3 +119,17 @@ def predict_news(text: str) -> dict:
     pred = _model.predict(vec)[0]
     proba = _model.predict_proba(vec)[0]
 
+    label = "REAL" if pred == 1 else "FAKE"
+    confidence = float(np.max(proba))
+
+    # Gradient Boosting classes_ order: [0, 1] → [FAKE, REAL]
+    return {
+        "label": label,
+        "confidence": confidence,
+        "probabilities": {
+            "FAKE": float(proba[0]),
+            "REAL": float(proba[1]),
+        },
+    }
+
+
