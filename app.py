@@ -615,3 +615,31 @@ div[data-testid="stDownloadButton"] > button:hover {
     border-color: var(--accent-cyan) !important;
     color: var(--accent-cyan) !important;
     box-shadow: 0 0 16px rgba(0, 212, 255, 0.08) !important;
+}
+.stTabs [data-baseweb="tab-highlight"] {
+    display: none !important;
+}
+.stTabs [data-baseweb="tab-border"] {
+    display: none !important;
+}
+
+/* ── Expander ──────────────────────────────────────────────────────────────── */
+[data-testid="stExpander"] {
+    background: var(--gradient-card) !important;
+    border: 1px solid var(--border-glass) !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(16px) !important;
+}
+[data-testid="stExpander"]:hover {
+    border-color: rgba(0, 212, 255, 0.15) !important;
+}
+
+/* ── Dataframe ─────────────────────────────────────────────────────────────── */
+[data-testid="stDataFrame"] {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-glass);
+}
+
+/* ── Slider styling ────────────────────────────────────────────────────────── */
+.stSlider [data-baseweb="slider"] [role="slider"] {
