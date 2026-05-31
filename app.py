@@ -783,3 +783,31 @@ _DEMO_ARTICLES = [
     {
         "text": "European Space Agency successfully deploys new climate monitoring satellite to track global temperature changes in real-time.",
         "label": "REAL",
+        "confidence": 0.874,
+        "source": "URL",
+    },
+    {
+        "text": "EXPOSED: Major tech CEO admits AI systems have achieved consciousness and are being hidden from the public.",
+        "label": "FAKE",
+        "confidence": 0.928,
+        "source": "Text",
+    },
+    {
+        "text": "New study in Nature journal shows ocean plastic pollution decreased for first time in recorded history thanks to global cleanup efforts.",
+        "label": "REAL",
+        "confidence": 0.856,
+        "source": "URL",
+    },
+    {
+        "text": "URGENT: Scientists confirm Earth's magnetic poles are about to flip within the next 30 days, causing worldwide blackouts.",
+        "label": "FAKE",
+        "confidence": 0.961,
+        "source": "Text",
+    },
+]
+
+if "demo_loaded" not in st.session_state:
+    now = datetime.now()
+    for i, article in enumerate(_DEMO_ARTICLES):
+        t = now - timedelta(minutes=(len(_DEMO_ARTICLES) - i) * 7 + random.randint(0, 5))
+        st.session_state.history.insert(0, {
