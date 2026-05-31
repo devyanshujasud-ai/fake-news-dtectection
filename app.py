@@ -502,3 +502,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
     66%  { transform: translate(-20px, 20px) scale(0.9); }
     100% { transform: translate(0, 0) scale(1); }
 }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ── Button styling ────────────────────────────────────────────────────────── */
+.stButton > button {
+    background: linear-gradient(135deg, #00d4ff, #8b5cf6) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 14px !important;
+    padding: 14px 36px !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    font-family: 'Inter', sans-serif !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 24px rgba(0, 212, 255, 0.2), 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    letter-spacing: 0.3px !important;
+    text-transform: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+.stButton > button:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 36px rgba(0, 212, 255, 0.35), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+.stButton > button:active {
+    transform: translateY(-1px) !important;
