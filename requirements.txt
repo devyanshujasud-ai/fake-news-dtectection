@@ -1,0 +1,13 @@
+scikit-learn
+joblib
+pandas
+streamlit
+numpy
+newspaper3k
+beautifulsoup4
+requests
+plotly
+wordcloud
+matplotlib
+seaborn
+lxml_html_clean
