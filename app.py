@@ -1596,3 +1596,31 @@ elif "Dashboard" in page:
         fake_sent = [15, 25, 60]
 
         fig = go.Figure()
+        fig.add_trace(go.Bar(x=sentiments, y=real_sent, name="Real News", marker_color="#10b981", text=[f"{v}%" for v in real_sent], textposition="outside"))
+        fig.add_trace(go.Bar(x=sentiments, y=fake_sent, name="Fake News", marker_color="#ef4444", text=[f"{v}%" for v in fake_sent], textposition="outside"))
+        fig.update_layout(
+            title="Sentiment Distribution by Label",
+            barmode="group",
+            height=360,
+            yaxis=dict(title="Percentage (%)", range=[0, 80]),
+            legend=dict(bgcolor="rgba(12,18,32,0.8)", bordercolor="rgba(100,160,255,0.12)"),
+        )
+        st.plotly_chart(dark_fig(fig), use_container_width=True)
+
+    with tab3:
+        # Model performance radar chart
+        if st.session_state.comparison_results:
+            res = st.session_state.comparison_results["results"]
+
+            # Radar chart
+            fig = go.Figure()
+            radar_colors = ["#00d4ff", "#8b5cf6", "#10b981", "#f59e0b"]
+            metrics_list = ["Accuracy", "Precision", "Recall", "F1", "AUC"]
+
+            for idx, (name, m) in enumerate(res.items()):
+                values = [m["accuracy"], m["precision"], m["recall"], m["f1"], m["roc_auc"]]
+                values.append(values[0])  # close the polygon
+                fig.add_trace(go.Scatterpolar(
+                    r=values,
+                    theta=metrics_list + [metrics_list[0]],
+                    fill='toself',
