@@ -979,3 +979,31 @@ if "Home" in page:
         """, unsafe_allow_html=True)
 
     st.markdown("")
+
+    # Input area
+    st.markdown('<p class="section-header">📝 Paste News Article</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-sub">Enter the full text of a news article to analyze its authenticity</p>', unsafe_allow_html=True)
+
+    # Pre-fill with a sample article for demo
+    sample_article = (
+        "Scientists at the European Organization for Nuclear Research (CERN) "
+        "announced today a breakthrough in quantum computing that could revolutionize "
+        "data processing speeds. The team, led by Dr. Elena Martinez, demonstrated "
+        "a 1000-qubit processor that maintained quantum coherence for over 10 minutes, "
+        "shattering previous records. The research, published in Nature Physics, suggests "
+        "practical quantum computing applications could be available within the next decade. "
+        "\"This is a monumental step forward,\" said Dr. Martinez during the press conference."
+    )
+
+    user_input = st.text_area(
+        "news_input",
+        value=sample_article,
+        height=200,
+        placeholder="Paste the news article text here…",
+        label_visibility="collapsed",
+    )
+
+    col_btn, col_clear = st.columns([1, 1])
+    with col_btn:
+        detect_btn = st.button("🔍  Analyze Article", use_container_width=True, key="detect_home")
+    with col_clear:
