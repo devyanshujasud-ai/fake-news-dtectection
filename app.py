@@ -811,3 +811,31 @@ if "demo_loaded" not in st.session_state:
     for i, article in enumerate(_DEMO_ARTICLES):
         t = now - timedelta(minutes=(len(_DEMO_ARTICLES) - i) * 7 + random.randint(0, 5))
         st.session_state.history.insert(0, {
+            "time": t.strftime("%H:%M:%S"),
+            "text": article["text"][:120] + ("…" if len(article["text"]) > 120 else ""),
+            "label": article["label"],
+            "confidence": f"{article['confidence']:.1%}",
+            "source": article["source"],
+        })
+    st.session_state.demo_loaded = True
+
+
+# ---------------------------------------------------------------------------
+# Helper: render a plotly chart with dark theme
+# ---------------------------------------------------------------------------
+PLOTLY_LAYOUT = dict(
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
+    font=dict(family="Inter, sans-serif", color="#f1f5f9", size=13),
+    margin=dict(t=50, b=40, l=50, r=30),
+    title_font=dict(size=16, color="#f1f5f9"),
+)
+
+
+def dark_fig(fig):
+    """Apply consistent dark theme to a plotly figure."""
+    fig.update_layout(**PLOTLY_LAYOUT)
+    fig.update_xaxes(
+        gridcolor="rgba(100,160,255,0.05)",
+        zerolinecolor="rgba(100,160,255,0.08)",
+        tickfont=dict(color="#94a3b8"),
