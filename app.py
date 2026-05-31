@@ -530,3 +530,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
 }
 .stButton > button:active {
     transform: translateY(-1px) !important;
+}
+
+/* Secondary button style */
+.stButton > button[kind="secondary"],
+div[data-testid="stDownloadButton"] > button {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid var(--border-glass) !important;
+    box-shadow: none !important;
+}
+div[data-testid="stDownloadButton"] > button:hover {
+    background: rgba(0, 212, 255, 0.1) !important;
+    border-color: var(--accent-cyan) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* ── Text area styling ─────────────────────────────────────────────────────── */
+.stTextArea textarea {
+    background: rgba(12, 18, 32, 0.7) !important;
+    border: 1px solid var(--border-glass) !important;
+    border-radius: 16px !important;
+    color: var(--text-primary) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.95rem !important;
+    padding: 16px 20px !important;
+    transition: all 0.3s ease !important;
+    line-height: 1.6 !important;
+}
+.stTextArea textarea:focus {
