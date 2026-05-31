@@ -37,3 +37,17 @@ def _clean(text: str) -> str:
     return text
 
 
+def dataset_available() -> bool:
+    """Check whether True.csv and Fake.csv exist in data/."""
+    return (
+        os.path.isfile(os.path.join(DATA_DIR, "True.csv"))
+        and os.path.isfile(os.path.join(DATA_DIR, "Fake.csv"))
+    )
+
+
+def load_dataset() -> pd.DataFrame:
+    """
+    Load and merge True.csv + Fake.csv.
+    Returns a DataFrame with columns: text, label (1=Real, 0=Fake).
+    """
+    true_df = pd.read_csv(os.path.join(DATA_DIR, "True.csv"))
