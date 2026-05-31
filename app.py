@@ -1708,3 +1708,31 @@ elif "History" in page:
         st.markdown("""
         <div class="glass-card" style="text-align:center; padding:60px 30px;">
             <div style="font-size:4rem; margin-bottom:16px; opacity:0.6;">🔍</div>
+            <p class="section-header">No predictions yet</p>
+            <p class="section-sub" style="margin-bottom:0;">Go to the Home page or URL Analyzer to make your first prediction!</p>
+        </div>
+        """, unsafe_allow_html=True)
+    else:
+        # Action buttons
+        col_export, col_clear = st.columns([1, 1])
+        with col_export:
+            history_df = pd.DataFrame(st.session_state.history)
+            csv = history_df.to_csv(index=False)
+            st.download_button(
+                "📥  Export as CSV",
+                csv,
+                "prediction_history.csv",
+                "text/csv",
+                use_container_width=True,
+            )
+        with col_clear:
+            if st.button("🗑️  Clear History", use_container_width=True, key="clear_history"):
+                st.session_state.history = []
+                st.session_state.demo_loaded = False
+                st.rerun()
+
+        st.markdown("")
+
+        # Summary stats
+        total = len(st.session_state.history)
+        reals = sum(1 for h in st.session_state.history if h["label"] == "REAL")
