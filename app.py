@@ -1624,3 +1624,31 @@ elif "Dashboard" in page:
                     r=values,
                     theta=metrics_list + [metrics_list[0]],
                     fill='toself',
+                    name=name,
+                    line=dict(color=radar_colors[idx % len(radar_colors)], width=2),
+                    fillcolor=f"rgba({int(radar_colors[idx][1:3],16)},{int(radar_colors[idx][3:5],16)},{int(radar_colors[idx][5:7],16)},0.1)",
+                ))
+
+            fig.update_layout(
+                title="Model Performance Radar",
+                height=500,
+                polar=dict(
+                    bgcolor="rgba(0,0,0,0)",
+                    radialaxis=dict(
+                        visible=True,
+                        range=[0.85, 1.0],
+                        gridcolor="rgba(100,160,255,0.08)",
+                        tickfont=dict(color="#64748b", size=10),
+                    ),
+                    angularaxis=dict(
+                        gridcolor="rgba(100,160,255,0.08)",
+                        tickfont=dict(color="#94a3b8", size=12),
+                    ),
+                ),
+                legend=dict(
+                    bgcolor="rgba(12,18,32,0.8)",
+                    bordercolor="rgba(100,160,255,0.12)",
+                    font=dict(size=11, family="Inter"),
+                ),
+            )
+            st.plotly_chart(dark_fig(fig), use_container_width=True)
