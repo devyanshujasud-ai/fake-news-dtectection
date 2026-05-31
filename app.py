@@ -138,3 +138,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
 }
 [data-testid="stSidebar"] .stRadio > div > label:hover {
     background: rgba(0, 212, 255, 0.08) !important;
+    border-color: rgba(0, 212, 255, 0.2) !important;
+    transform: translateX(4px) !important;
+}
+[data-testid="stSidebar"] .stRadio > div > label[data-checked="true"],
+[data-testid="stSidebar"] .stRadio > div > label:has(input:checked) {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.12), rgba(124, 58, 237, 0.12)) !important;
+    border-color: rgba(0, 212, 255, 0.3) !important;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.08) !important;
+}
+
+/* ── Glass card ────────────────────────────────────────────────────────────── */
+.glass-card {
+    background: var(--gradient-card);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
