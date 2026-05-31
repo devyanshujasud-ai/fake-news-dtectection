@@ -166,3 +166,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
     position: absolute;
     top: 0;
     left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), rgba(139, 92, 246, 0.3), transparent);
+}
+.glass-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-glow);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow), var(--shadow-card);
+}
+
+/* ── Hero section ──────────────────────────────────────────────────────────── */
+.hero-title {
+    font-size: 3.2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #00d4ff 0%, #8b5cf6 40%, #ec4899 70%, #00d4ff 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    margin-bottom: 4px;
+    animation: fadeInDown 0.8s ease-out, shimmer 6s ease-in-out infinite;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+.hero-subtitle {
+    font-size: 1.15rem;
