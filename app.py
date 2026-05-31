@@ -390,3 +390,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
     transform: translateX(4px);
 }
 .url-preview h4 {
+    color: var(--text-primary);
+    margin: 0 0 8px 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+.url-preview p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* ── Demo badge ────────────────────────────────────────────────────────────── */
+.demo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    border-radius: 24px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(249,115,22,0.1));
+    color: var(--accent-amber);
+    border: 1px solid rgba(245,158,11,0.25);
+    animation: pulse 3s ease-in-out infinite;
+}
+
