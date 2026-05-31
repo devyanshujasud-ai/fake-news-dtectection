@@ -474,3 +474,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
 .stat-inline .stat-dot.green { background: var(--accent-green); box-shadow: 0 0 8px rgba(16, 185, 129, 0.5); }
 .stat-inline .stat-dot.red { background: var(--accent-red); box-shadow: 0 0 8px rgba(239, 68, 68, 0.5); }
 .stat-inline .stat-dot.cyan { background: var(--accent-cyan); box-shadow: 0 0 8px rgba(0, 212, 255, 0.5); }
+
+/* ── Animations ────────────────────────────────────────────────────────────── */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(1.02); opacity: 0.85; }
+}
+@keyframes shimmer {
+    0%   { background-position: 200% 0%; }
+    100% { background-position: -200% 0%; }
+}
+@keyframes shimmerBar {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+}
+@keyframes floatOrb {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(30px, -30px) scale(1.1); }
+    66%  { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
+}
