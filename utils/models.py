@@ -64,3 +64,16 @@ def load_dataset() -> pd.DataFrame:
     elif "text" in df.columns:
         df["combined"] = df["text"].fillna("")
     else:
+        raise ValueError("Dataset must contain a 'text' column.")
+
+    df["combined"] = df["combined"].apply(_clean)
+    df = df[df["combined"].str.len() > 10]  # drop near-empty rows
+    return df[["combined", "label"]].rename(columns={"combined": "text"})
+
+
+# ---------------------------------------------------------------------------
+# Model definitions
+# ---------------------------------------------------------------------------
+MODELS = {
+    "Logistic Regression": LogisticRegression(max_iter=1000, C=1.0),
+    "Random Forest": RandomForestClassifier(n_estimators=100, n_jobs=-1, random_state=42),
