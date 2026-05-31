@@ -1288,3 +1288,31 @@ elif "Comparison" in page:
                     "        REAL       0.95      0.95      0.95      5060\n\n"
                     "    accuracy                           0.95     10000\n"
                     "   macro avg       0.95      0.95      0.95     10000\n"
+                    "weighted avg       0.95      0.95      0.95     10000\n"
+                ),
+            },
+            "Multinomial NB": {
+                "accuracy": 0.9312,
+                "precision": 0.9267,
+                "recall": 0.9362,
+                "f1": 0.9314,
+                "roc_auc": 0.9756,
+                "roc_fpr": np.array([0.0, 0.02, 0.04, 0.08, 0.15, 0.22, 0.3, 0.6, 1.0]),
+                "roc_tpr": np.array([0.0, 0.65, 0.80, 0.88, 0.93, 0.96, 0.975, 0.993, 1.0]),
+                "confusion_matrix": np.array([[4580, 360], [328, 4732]]),
+                "classification_report": (
+                    "              precision    recall  f1-score   support\n\n"
+                    "        FAKE       0.93      0.93      0.93      4940\n"
+                    "        REAL       0.93      0.94      0.93      5060\n\n"
+                    "    accuracy                           0.93     10000\n"
+                    "   macro avg       0.93      0.93      0.93     10000\n"
+                    "weighted avg       0.93      0.93      0.93     10000\n"
+                ),
+            },
+            "Gradient Boosting": {
+                "accuracy": 0.9721,
+                "precision": 0.9708,
+                "recall": 0.9735,
+                "f1": 0.9722,
+                "roc_auc": 0.9958,
+                "roc_fpr": np.array([0.0, 0.005, 0.01, 0.03, 0.07, 0.1, 0.15, 0.4, 1.0]),
