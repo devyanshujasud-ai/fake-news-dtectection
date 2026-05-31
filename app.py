@@ -1063,3 +1063,31 @@ if "Home" in page:
                 """, unsafe_allow_html=True)
             with prob_col2:
                 st.markdown(f"""
+                <div class="metric-card">
+                    <div class="metric-value" style="-webkit-text-fill-color:#ef4444;">{proba['FAKE']:.1%}</div>
+                    <div class="metric-label">Fake Probability</div>
+                </div>
+                """, unsafe_allow_html=True)
+
+            # Gauge chart
+            fig = go.Figure(go.Indicator(
+                mode="gauge+number",
+                value=proba["REAL"] * 100,
+                number={"suffix": "%", "font": {"color": "#f1f5f9", "size": 32, "family": "Inter"}},
+                title={"text": "Authenticity Score", "font": {"color": "#94a3b8", "size": 14, "family": "Inter"}},
+                gauge={
+                    "axis": {"range": [0, 100], "tickfont": {"color": "#64748b", "size": 11}},
+                    "bar": {"color": "#00d4ff", "thickness": 0.3},
+                    "bgcolor": "rgba(12,18,32,0.5)",
+                    "bordercolor": "rgba(100,160,255,0.12)",
+                    "borderwidth": 1,
+                    "steps": [
+                        {"range": [0, 30], "color": "rgba(239,68,68,0.12)"},
+                        {"range": [30, 70], "color": "rgba(245,158,11,0.12)"},
+                        {"range": [70, 100], "color": "rgba(16,185,129,0.12)"},
+                    ],
+                    "threshold": {
+                        "line": {"color": "#f1f5f9", "width": 2},
+                        "thickness": 0.8,
+                        "value": proba["REAL"] * 100,
+                    },
