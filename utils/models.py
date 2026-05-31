@@ -77,3 +77,16 @@ def load_dataset() -> pd.DataFrame:
 MODELS = {
     "Logistic Regression": LogisticRegression(max_iter=1000, C=1.0),
     "Random Forest": RandomForestClassifier(n_estimators=100, n_jobs=-1, random_state=42),
+    "Multinomial Naive Bayes": MultinomialNB(alpha=1.0),
+    "Gradient Boosting": GradientBoostingClassifier(
+        n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42
+    ),
+}
+
+
+# ---------------------------------------------------------------------------
+# Train & evaluate
+# ---------------------------------------------------------------------------
+def train_and_compare(
+    df: pd.DataFrame | None = None,
+    test_size: float = 0.2,
