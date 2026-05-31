@@ -334,3 +334,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
 .confidence-bar-fill::after {
     content: '';
     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    animation: shimmerBar 2s ease-in-out infinite;
+}
+.confidence-bar-fill.real {
+    background: linear-gradient(90deg, #059669, #10b981, #34d399);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+}
+.confidence-bar-fill.fake {
+    background: linear-gradient(90deg, #dc2626, #ef4444, #f87171);
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.3);
+}
+
+/* ── Nav badge / pill ──────────────────────────────────────────────────────── */
+.nav-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+.nav-badge.cyan   { background: rgba(0,212,255,0.12); color: var(--accent-cyan); border: 1px solid rgba(0,212,255,0.2); }
+.nav-badge.purple { background: rgba(139,92,246,0.12); color: var(--accent-purple); border: 1px solid rgba(139,92,246,0.2); }
