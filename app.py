@@ -82,3 +82,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
     width: 600px;
     height: 600px;
     border-radius: 50%;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+    animation: floatOrb 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+[data-testid="stAppViewContainer"]::after {
+    content: '';
+    position: fixed;
+    bottom: -30%;
+    left: -15%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.06) 0%, transparent 70%);
+    animation: floatOrb 25s ease-in-out infinite reverse;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Sidebar ───────────────────────────────────────────────────────────────── */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #080d1a 0%, #0d1530 40%, #111833 100%) !important;
+    border-right: 1px solid var(--border-glass) !important;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4) !important;
+}
+[data-testid="stSidebar"]::before {
+    content: '';
+    position: absolute;
