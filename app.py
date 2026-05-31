@@ -1540,3 +1540,31 @@ elif "Dashboard" in page:
                 textposition="outside",
                 textfont=dict(color="#94a3b8", size=11),
             ))
+            fig.update_layout(title="Fake News by Category", height=320, yaxis=dict(title="Count"))
+            st.plotly_chart(dark_fig(fig), use_container_width=True)
+
+    with tab2:
+        # Text length distribution (simulated)
+        np.random.seed(42)
+        real_lengths = np.random.gamma(5, 800, size=2000)
+        fake_lengths = np.random.gamma(4, 600, size=2200)
+
+        fig = go.Figure()
+        fig.add_trace(go.Histogram(
+            x=real_lengths,
+            name="Real News",
+            marker_color="rgba(16,185,129,0.5)",
+            nbinsx=50,
+        ))
+        fig.add_trace(go.Histogram(
+            x=fake_lengths,
+            name="Fake News",
+            marker_color="rgba(239,68,68,0.5)",
+            nbinsx=50,
+        ))
+        fig.update_layout(
+            title="Article Length Distribution",
+            xaxis_title="Text Length (characters)",
+            yaxis_title="Count",
+            barmode="overlay",
+            height=420,
