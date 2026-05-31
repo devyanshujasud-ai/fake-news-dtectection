@@ -1035,3 +1035,31 @@ if "Home" in page:
                     <div class="result-confidence">Confidence: {confidence:.1%}</div>
                     <div class="confidence-bar-bg">
                         <div class="confidence-bar-fill real" style="width:{confidence*100:.1f}%"></div>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+            else:
+                st.markdown(f"""
+                <div class="result-fake">
+                    <div class="result-label fake">🚫 FAKE NEWS</div>
+                    <div class="result-confidence">Confidence: {confidence:.1%}</div>
+                    <div class="confidence-bar-bg">
+                        <div class="confidence-bar-fill fake" style="width:{confidence*100:.1f}%"></div>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+            st.markdown("")
+
+            # Probability breakdown
+            st.markdown('<p class="section-header">📊 Probability Breakdown</p>', unsafe_allow_html=True)
+            prob_col1, prob_col2 = st.columns(2)
+            with prob_col1:
+                st.markdown(f"""
+                <div class="metric-card">
+                    <div class="metric-value" style="-webkit-text-fill-color:#10b981;">{proba['REAL']:.1%}</div>
+                    <div class="metric-label">Real Probability</div>
+                </div>
+                """, unsafe_allow_html=True)
+            with prob_col2:
+                st.markdown(f"""
