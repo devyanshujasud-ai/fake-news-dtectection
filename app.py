@@ -671,3 +671,31 @@ div[data-testid="stDownloadButton"] > button:hover {
     background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+}
+.sidebar-sub {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* ── Status indicator ──────────────────────────────────────────────────────── */
+.status-live {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 24px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    font-size: 0.72rem;
+    color: var(--accent-green);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
