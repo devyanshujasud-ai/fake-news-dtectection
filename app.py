@@ -839,3 +839,31 @@ def dark_fig(fig):
         gridcolor="rgba(100,160,255,0.05)",
         zerolinecolor="rgba(100,160,255,0.08)",
         tickfont=dict(color="#94a3b8"),
+    )
+    fig.update_yaxes(
+        gridcolor="rgba(100,160,255,0.05)",
+        zerolinecolor="rgba(100,160,255,0.08)",
+        tickfont=dict(color="#94a3b8"),
+    )
+    return fig
+
+
+def add_to_history(text_snippet: str, label: str, confidence: float, source: str = "Text"):
+    """Append prediction to session history."""
+    st.session_state.history.insert(0, {
+        "time": datetime.now().strftime("%H:%M:%S"),
+        "text": text_snippet[:120] + ("…" if len(text_snippet) > 120 else ""),
+        "label": label,
+        "confidence": f"{confidence:.1%}",
+        "source": source,
+    })
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# SIDEBAR NAVIGATION
+# ═══════════════════════════════════════════════════════════════════════════
+with st.sidebar:
+    st.markdown("""
+    <div class="sidebar-logo">
+        <span class="logo-icon">🛡️</span>
+    </div>
