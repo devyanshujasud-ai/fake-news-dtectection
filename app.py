@@ -1203,3 +1203,32 @@ elif "URL" in page:
 
                 # Probability bar chart
                 fig = go.Figure(go.Bar(
+                    x=["Real", "Fake"],
+                    y=[proba["REAL"] * 100, proba["FAKE"] * 100],
+                    marker=dict(
+                        color=["#10b981", "#ef4444"],
+                        line=dict(width=0),
+                    ),
+                    text=[f"{proba['REAL']:.1%}", f"{proba['FAKE']:.1%}"],
+                    textposition="outside",
+                    textfont=dict(color="#f1f5f9", size=15, family="Inter"),
+                ))
+                fig.update_layout(
+                    title="Probability Distribution",
+                    height=320,
+                    yaxis=dict(title="Probability (%)", range=[0, 115]),
+                )
+                st.plotly_chart(dark_fig(fig), use_container_width=True)
+
+                # Full article expander
+                with st.expander("📖 View Full Extracted Text"):
+                    st.text(result.get("text", "No text extracted."))
+
+    # Info section for URL page
+    st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+    st.markdown("""
+    <div class="glass-card">
+        <p class="section-header">🌐 Supported Sources</p>
+        <p class="section-sub" style="margin-bottom:0;">
+            Our URL analyzer uses the <strong>newspaper3k</strong> library to extract article content from most major news websites.
+            Simply paste any article URL above and click analyze. The system will automatically download, parse, and classify the article content.
