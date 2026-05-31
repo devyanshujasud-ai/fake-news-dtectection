@@ -51,3 +51,16 @@ def load_dataset() -> pd.DataFrame:
     Returns a DataFrame with columns: text, label (1=Real, 0=Fake).
     """
     true_df = pd.read_csv(os.path.join(DATA_DIR, "True.csv"))
+    fake_df = pd.read_csv(os.path.join(DATA_DIR, "Fake.csv"))
+
+    true_df["label"] = 1
+    fake_df["label"] = 0
+
+    df = pd.concat([true_df, fake_df], ignore_index=True)
+
+    # Combine title + text for richer features
+    if "title" in df.columns and "text" in df.columns:
+        df["combined"] = df["title"].fillna("") + " " + df["text"].fillna("")
+    elif "text" in df.columns:
+        df["combined"] = df["text"].fillna("")
+    else:
