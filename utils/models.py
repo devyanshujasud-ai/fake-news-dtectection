@@ -183,3 +183,17 @@ def train_and_compare(
     }
 
 
+def get_dataset_stats(df: pd.DataFrame | None = None) -> dict:
+    """Return basic dataset statistics for the dashboard."""
+    if df is None:
+        df = load_dataset()
+    total = len(df)
+    real = int((df["label"] == 1).sum())
+    fake = int((df["label"] == 0).sum())
+    avg_len = float(df["text"].str.len().mean())
+    return {
+        "total": total,
+        "real": real,
+        "fake": fake,
+        "avg_length": avg_len,
+    }
