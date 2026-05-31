@@ -104,3 +104,16 @@ def train_and_compare(
     max_features : TF-IDF vocabulary cap.
     selected_models : list of model names to train (keys of MODELS dict).
     progress_callback : optional callable(step, total, message).
+
+    Returns
+    -------
+    dict  – {
+        "vectorizer": fitted TfidfVectorizer,
+        "X_test", "y_test": test arrays,
+        "results": {
+            model_name: {
+                "model": fitted estimator,
+                "accuracy", "precision", "recall", "f1": floats,
+                "confusion_matrix": 2×2 ndarray,
+                "roc_fpr", "roc_tpr", "roc_auc": arrays / float,
+                "classification_report": str,
