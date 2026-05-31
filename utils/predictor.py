@@ -187,3 +187,17 @@ def predict_from_url(url: str) -> dict:
             result["authors"] = ["Demo Author"]
             return result
 
+        return {
+            "label": "ERROR",
+            "confidence": 0.0,
+            "probabilities": {"REAL": 0.0, "FAKE": 0.0},
+            "title": "",
+            "text": "",
+            "authors": [],
+            "error": str(e),
+        }
+
+
+def is_demo_mode() -> bool:
+    """Return whether the predictor is running in demo mode."""
+    return _demo_mode
