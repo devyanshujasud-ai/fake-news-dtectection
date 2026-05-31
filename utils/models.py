@@ -143,3 +143,17 @@ def train_and_compare(
         X, y, test_size=test_size, random_state=42, stratify=y
     )
 
+    # --- Train each model -------------------------------------------------
+    results = {}
+    for idx, (name, estimator) in enumerate(models_to_train.items(), start=1):
+        if progress_callback:
+            progress_callback(idx, total_steps, f"Training {name}…")
+
+        estimator.fit(X_train, y_train)
+        y_pred = estimator.predict(X_test)
+
+        # Probabilities (for ROC)
+        if hasattr(estimator, "predict_proba"):
+            y_proba = estimator.predict_proba(X_test)[:, 1]
+        else:
+            y_proba = estimator.decision_function(X_test)
