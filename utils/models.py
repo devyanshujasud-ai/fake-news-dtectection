@@ -157,3 +157,16 @@ def train_and_compare(
             y_proba = estimator.predict_proba(X_test)[:, 1]
         else:
             y_proba = estimator.decision_function(X_test)
+
+        fpr, tpr, _ = roc_curve(y_test, y_proba)
+        roc_auc = auc(fpr, tpr)
+
+        results[name] = {
+            "model": estimator,
+            "accuracy": accuracy_score(y_test, y_pred),
+            "precision": precision_score(y_test, y_pred, zero_division=0),
+            "recall": recall_score(y_test, y_pred, zero_division=0),
+            "f1": f1_score(y_test, y_pred, zero_division=0),
+            "confusion_matrix": confusion_matrix(y_test, y_pred),
+            "roc_fpr": fpr,
+            "roc_tpr": tpr,
