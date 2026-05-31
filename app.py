@@ -1400,3 +1400,31 @@ elif "Comparison" in page:
         for idx, (name, metrics) in enumerate(res.items()):
             fig.add_trace(go.Scatter(
                 x=metrics["roc_fpr"], y=metrics["roc_tpr"],
+                mode="lines",
+                name=f"{name} (AUC={metrics['roc_auc']:.4f})",
+                line=dict(color=line_colors[idx % len(line_colors)], width=2.5),
+                fill='tozeroy' if idx == 0 else None,
+                fillcolor=f"rgba({int(line_colors[idx][1:3],16)},{int(line_colors[idx][3:5],16)},{int(line_colors[idx][5:7],16)},0.03)" if idx == 0 else None,
+            ))
+        fig.add_trace(go.Scatter(
+            x=[0, 1], y=[0, 1],
+            mode="lines",
+            name="Random Baseline",
+            line=dict(color="#475569", dash="dash", width=1.5),
+        ))
+        fig.update_layout(
+            title="ROC Curves — Receiver Operating Characteristic",
+            xaxis_title="False Positive Rate",
+            yaxis_title="True Positive Rate",
+            height=480,
+            legend=dict(
+                bgcolor="rgba(12,18,32,0.8)",
+                bordercolor="rgba(100,160,255,0.12)",
+                font=dict(size=11, family="Inter"),
+                borderwidth=1,
+            ),
+        )
+        st.plotly_chart(dark_fig(fig), use_container_width=True)
+
+    with tab3:
+        cm_cols = st.columns(min(len(res), 2))
