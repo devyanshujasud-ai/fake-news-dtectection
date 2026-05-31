@@ -895,3 +895,31 @@ with st.sidebar:
         label_visibility="collapsed",
     )
 
+    st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+
+    # Sidebar stats
+    st.markdown(f"""
+    <div class="metric-card" style="margin-bottom:14px;">
+        <div class="metric-value">{len(st.session_state.history)}</div>
+        <div class="metric-label">Predictions Made</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    real_count = sum(1 for h in st.session_state.history if h["label"] == "REAL")
+    fake_count = sum(1 for h in st.session_state.history if h["label"] == "FAKE")
+    st.markdown(f"""
+    <div style="display:flex;gap:10px;">
+        <div class="metric-card" style="flex:1;">
+            <div class="metric-value" style="-webkit-text-fill-color:#10b981;">{real_count}</div>
+            <div class="metric-label">Real</div>
+        </div>
+        <div class="metric-card" style="flex:1;">
+            <div class="metric-value" style="-webkit-text-fill-color:#ef4444;">{fake_count}</div>
+            <div class="metric-label">Fake</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+    st.markdown(
+        '<p style="text-align:center;font-size:0.68rem;color:#475569;line-height:1.6;">'
