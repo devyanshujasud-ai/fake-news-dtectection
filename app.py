@@ -558,3 +558,31 @@ div[data-testid="stDownloadButton"] > button:hover {
     line-height: 1.6 !important;
 }
 .stTextArea textarea:focus {
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1), 0 0 20px rgba(0, 212, 255, 0.05) !important;
+}
+.stTextArea textarea::placeholder {
+    color: var(--text-muted) !important;
+    font-style: italic !important;
+}
+
+/* ── Text input styling ────────────────────────────────────────────────────── */
+.stTextInput input {
+    background: rgba(12, 18, 32, 0.7) !important;
+    border: 1px solid var(--border-glass) !important;
+    border-radius: 14px !important;
+    color: var(--text-primary) !important;
+    font-family: 'Inter', sans-serif !important;
+    padding: 12px 18px !important;
+    transition: all 0.3s ease !important;
+}
+.stTextInput input:focus {
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1) !important;
+}
+
+/* ── Selectbox / multiselect ───────────────────────────────────────────────── */
+[data-testid="stSelectbox"] > div > div,
+[data-testid="stMultiSelect"] > div > div {
+    background: rgba(12, 18, 32, 0.7) !important;
+    border: 1px solid var(--border-glass) !important;
