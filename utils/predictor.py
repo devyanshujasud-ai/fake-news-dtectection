@@ -173,3 +173,17 @@ def predict_from_url(url: str) -> dict:
         result["text"] = body[:5000]
         result["authors"] = authors
         return result
+
+    except Exception as e:
+        # In demo mode, return a simulated URL result
+        if _demo_mode:
+            result = _demo_predict(f"article from {url}")
+            result["title"] = f"Article from {url.split('/')[2] if '/' in url else url}"
+            result["text"] = (
+                "This is a simulated article extraction for demo purposes. "
+                "In production, the newspaper3k library would download and parse "
+                "the actual article content from the provided URL."
+            )
+            result["authors"] = ["Demo Author"]
+            return result
+
