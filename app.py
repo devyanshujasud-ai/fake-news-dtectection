@@ -446,3 +446,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 6px;
+}
+.feature-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ── Stat pill inline ──────────────────────────────────────────────────────── */
+.stat-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid var(--border-glass);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+.stat-inline .stat-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.stat-inline .stat-dot.green { background: var(--accent-green); box-shadow: 0 0 8px rgba(16, 185, 129, 0.5); }
+.stat-inline .stat-dot.red { background: var(--accent-red); box-shadow: 0 0 8px rgba(239, 68, 68, 0.5); }
+.stat-inline .stat-dot.cyan { background: var(--accent-cyan); box-shadow: 0 0 8px rgba(0, 212, 255, 0.5); }
