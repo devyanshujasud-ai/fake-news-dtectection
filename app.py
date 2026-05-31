@@ -418,3 +418,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
     animation: pulse 3s ease-in-out infinite;
 }
 
+/* ── Feature grid ──────────────────────────────────────────────────────────── */
+.feature-card {
+    background: var(--gradient-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    padding: 28px 24px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    min-height: 160px;
+}
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-glow), 0 16px 48px rgba(0, 0, 0, 0.3);
+    border-color: var(--border-glow);
+}
+.feature-icon {
+    font-size: 2.4rem;
+    margin-bottom: 12px;
+    display: block;
+}
+.feature-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
