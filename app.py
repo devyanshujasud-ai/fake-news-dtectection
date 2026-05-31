@@ -278,3 +278,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
     -webkit-backdrop-filter: blur(20px) saturate(150%);
     border: 1px solid var(--border-glass);
     border-radius: 16px;
+    padding: 24px 26px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+.metric-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+}
+.metric-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 212, 255, 0.06);
+    border-color: var(--border-glow);
+}
+.metric-value {
+    font-size: 2.2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+}
