@@ -117,3 +117,16 @@ def train_and_compare(
                 "confusion_matrix": 2×2 ndarray,
                 "roc_fpr", "roc_tpr", "roc_auc": arrays / float,
                 "classification_report": str,
+                "y_pred": array,
+            }
+        }
+    }
+    """
+    if df is None:
+        df = load_dataset()
+
+    models_to_train = {
+        k: v for k, v in MODELS.items()
+        if selected_models is None or k in selected_models
+    }
+    total_steps = len(models_to_train) + 1  # +1 for vectorisation
