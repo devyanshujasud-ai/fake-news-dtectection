@@ -1007,3 +1007,31 @@ if "Home" in page:
     with col_btn:
         detect_btn = st.button("🔍  Analyze Article", use_container_width=True, key="detect_home")
     with col_clear:
+        clear_btn = st.button("🗑️  Clear", use_container_width=True, key="clear_home")
+
+    if clear_btn:
+        st.rerun()
+
+    if detect_btn:
+        if not user_input.strip():
+            st.warning("⚠️ Please paste some news text to analyze.")
+        else:
+            with st.spinner("🧠 Analyzing article with AI…"):
+                from utils.predictor import predict_news
+                result = predict_news(user_input)
+                time.sleep(0.8)  # slight delay for UX
+
+            label = result["label"]
+            confidence = result["confidence"]
+            proba = result["probabilities"]
+
+            add_to_history(user_input, label, confidence, "Text")
+
+            # Result card
+            if label == "REAL":
+                st.markdown(f"""
+                <div class="result-real">
+                    <div class="result-label real">✅ REAL NEWS</div>
+                    <div class="result-confidence">Confidence: {confidence:.1%}</div>
+                    <div class="confidence-bar-bg">
+                        <div class="confidence-bar-fill real" style="width:{confidence*100:.1f}%"></div>
