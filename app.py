@@ -1736,3 +1736,31 @@ elif "History" in page:
         # Summary stats
         total = len(st.session_state.history)
         reals = sum(1 for h in st.session_state.history if h["label"] == "REAL")
+        fakes = sum(1 for h in st.session_state.history if h["label"] == "FAKE")
+
+        h1, h2, h3 = st.columns(3)
+        with h1:
+            st.markdown(f'<div class="metric-card"><div class="metric-value">{total}</div><div class="metric-label">Total Predictions</div></div>', unsafe_allow_html=True)
+        with h2:
+            st.markdown(f'<div class="metric-card"><div class="metric-value" style="-webkit-text-fill-color:#10b981;">{reals}</div><div class="metric-label">Classified Real</div></div>', unsafe_allow_html=True)
+        with h3:
+            st.markdown(f'<div class="metric-card"><div class="metric-value" style="-webkit-text-fill-color:#ef4444;">{fakes}</div><div class="metric-label">Classified Fake</div></div>', unsafe_allow_html=True)
+
+        st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+
+        # History table
+        for i, entry in enumerate(st.session_state.history):
+            label_color = "#10b981" if entry["label"] == "REAL" else "#ef4444"
+            label_icon = "✅" if entry["label"] == "REAL" else "🚫"
+            label_bg = "rgba(16,185,129,0.06)" if entry["label"] == "REAL" else "rgba(239,68,68,0.06)"
+            source_badge = "cyan" if entry["source"] == "Text" else "purple"
+            anim_delay = min(i * 0.05, 0.4)
+
+            st.markdown(f"""
+            <div class="glass-card" style="padding:18px 26px; animation: slideUp 0.5s ease-out {anim_delay}s both;">
+                <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+                    <div style="flex:1; min-width:200px;">
+                        <div style="font-size:0.73rem; color:#64748b; margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+                            🕐 {entry['time']}
+                            <span class="nav-badge {source_badge}">{entry['source']}</span>
+                        </div>
