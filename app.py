@@ -643,3 +643,31 @@ div[data-testid="stDownloadButton"] > button:hover {
 
 /* ── Slider styling ────────────────────────────────────────────────────────── */
 .stSlider [data-baseweb="slider"] [role="slider"] {
+    background: var(--accent-cyan) !important;
+    border: 2px solid white !important;
+}
+
+/* ── Progress bar ──────────────────────────────────────────────────────────── */
+.stProgress > div > div > div {
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)) !important;
+    border-radius: 8px !important;
+}
+
+/* ── Sidebar title ─────────────────────────────────────────────────────────── */
+.sidebar-logo {
+    text-align: center;
+    padding: 8px 0;
+    margin-bottom: 4px;
+}
+.sidebar-logo .logo-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.4));
+}
+.sidebar-title {
+    font-size: 1.3rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
