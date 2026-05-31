@@ -250,3 +250,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
 }
 .result-fake::before {
     content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ef4444, #f87171, transparent);
+}
+.result-label {
+    font-size: 2.4rem;
+    font-weight: 900;
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+}
+.result-label.real { color: var(--accent-green); text-shadow: 0 0 30px rgba(16, 185, 129, 0.3); }
+.result-label.fake { color: var(--accent-red); text-shadow: 0 0 30px rgba(239, 68, 68, 0.3); }
+.result-confidence {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+/* ── Metric cards ──────────────────────────────────────────────────────────── */
+.metric-card {
+    background: var(--gradient-card);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
