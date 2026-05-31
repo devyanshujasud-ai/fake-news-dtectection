@@ -362,3 +362,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
 }
 .nav-badge.cyan   { background: rgba(0,212,255,0.12); color: var(--accent-cyan); border: 1px solid rgba(0,212,255,0.2); }
 .nav-badge.purple { background: rgba(139,92,246,0.12); color: var(--accent-purple); border: 1px solid rgba(139,92,246,0.2); }
+.nav-badge.green  { background: rgba(16,185,129,0.12); color: var(--accent-green); border: 1px solid rgba(16,185,129,0.2); }
+.nav-badge.amber  { background: rgba(245,158,11,0.12); color: var(--accent-amber); border: 1px solid rgba(245,158,11,0.2); }
+.nav-badge.pink   { background: rgba(236,72,153,0.12); color: var(--accent-pink); border: 1px solid rgba(236,72,153,0.2); }
+.nav-badge.rose   { background: rgba(244,63,94,0.12); color: var(--accent-rose); border: 1px solid rgba(244,63,94,0.2); }
+
+/* ── Divider ───────────────────────────────────────────────────────────────── */
+.glow-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,212,255,0.3), rgba(139,92,246,0.3), rgba(236,72,153,0.3), transparent);
+    border: none;
+    margin: 30px 0;
+}
+
+/* ── URL preview card ──────────────────────────────────────────────────────── */
+.url-preview {
+    background: var(--gradient-card);
+    border-left: 3px solid var(--accent-cyan);
+    border-radius: 0 16px 16px 0;
+    padding: 22px 26px;
+    margin: 16px 0;
+    backdrop-filter: blur(16px);
+    transition: all 0.3s ease;
+}
+.url-preview:hover {
+    border-left-color: var(--accent-purple);
+    transform: translateX(4px);
+}
+.url-preview h4 {
