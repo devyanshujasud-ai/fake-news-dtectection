@@ -133,3 +133,16 @@ def predict_news(text: str) -> dict:
     }
 
 
+# ---------------------------------------------------------------------------
+# URL-based prediction
+# ---------------------------------------------------------------------------
+def predict_from_url(url: str) -> dict:
+    """
+    Download the article at *url*, extract its text with newspaper3k,
+    then predict.
+
+    Returns the same dict as predict_news, plus:
+        title   – extracted article title
+        text    – extracted article body (first 5000 chars)
+        authors – list of author names
+    """
