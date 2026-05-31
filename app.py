@@ -1428,3 +1428,31 @@ elif "Comparison" in page:
 
     with tab3:
         cm_cols = st.columns(min(len(res), 2))
+        for idx, (name, metrics) in enumerate(res.items()):
+            with cm_cols[idx % 2]:
+                cm = metrics["confusion_matrix"]
+                fig = px.imshow(
+                    cm,
+                    labels=dict(x="Predicted", y="Actual", color="Count"),
+                    x=["FAKE", "REAL"],
+                    y=["FAKE", "REAL"],
+                    text_auto=True,
+                    color_continuous_scale=["#06090f", "#0c1220", "#00d4ff"],
+                )
+                fig.update_layout(title=name, height=360)
+                fig.update_traces(textfont=dict(size=14, family="Inter"))
+                st.plotly_chart(dark_fig(fig), use_container_width=True)
+
+    # Classification reports
+    st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">📋 Classification Reports</p>', unsafe_allow_html=True)
+    for name, metrics in res.items():
+        with st.expander(f"📄 {name}"):
+            st.code(metrics["classification_report"], language="text")
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PAGE: DASHBOARD
+# ═══════════════════════════════════════════════════════════════════════════
+elif "Dashboard" in page:
+    st.markdown('<h1 class="hero-title">📈 Analytics Dashboard</h1>', unsafe_allow_html=True)
