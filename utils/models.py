@@ -90,3 +90,17 @@ MODELS = {
 def train_and_compare(
     df: pd.DataFrame | None = None,
     test_size: float = 0.2,
+    max_features: int = 5000,
+    selected_models: list[str] | None = None,
+    progress_callback=None,
+):
+    """
+    Train multiple models and return evaluation results.
+
+    Parameters
+    ----------
+    df : DataFrame with columns text, label. If None, load_dataset() is called.
+    test_size : fraction held out for testing.
+    max_features : TF-IDF vocabulary cap.
+    selected_models : list of model names to train (keys of MODELS dict).
+    progress_callback : optional callable(step, total, message).
