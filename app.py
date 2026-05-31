@@ -1652,3 +1652,31 @@ elif "Dashboard" in page:
                 ),
             )
             st.plotly_chart(dark_fig(fig), use_container_width=True)
+
+            # Grouped bar chart
+            metrics_data = []
+            for name, m in res.items():
+                metrics_data.append({
+                    "Model": name,
+                    "Accuracy": m["accuracy"],
+                    "Precision": m["precision"],
+                    "Recall": m["recall"],
+                    "F1": m["f1"],
+                    "AUC": m["roc_auc"],
+                })
+            metrics_df = pd.DataFrame(metrics_data)
+
+            fig = go.Figure()
+            colors_map = {"Accuracy": "#00d4ff", "Precision": "#8b5cf6", "Recall": "#10b981", "F1": "#f59e0b"}
+            for metric, color in colors_map.items():
+                fig.add_trace(go.Bar(
+                    x=metrics_df["Model"],
+                    y=metrics_df[metric] * 100,
+                    name=metric,
+                    marker_color=color,
+                    text=[f"{v:.1f}%" for v in metrics_df[metric] * 100],
+                    textposition="outside",
+                    textfont=dict(size=10, family="Inter"),
+                ))
+            fig.update_layout(
+                title="All Metrics Comparison",
