@@ -923,3 +923,31 @@ with st.sidebar:
     st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
     st.markdown(
         '<p style="text-align:center;font-size:0.68rem;color:#475569;line-height:1.6;">'
+        'Built with Streamlit & ML Pipeline<br>'
+        '<span style="color:#334155;">v2.0</span> · © 2025 FND System</p>',
+        unsafe_allow_html=True,
+    )
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PAGE: HOME
+# ═══════════════════════════════════════════════════════════════════════════
+if "Home" in page:
+    st.markdown('<h1 class="hero-title">🛡️ Fake News Detection</h1>', unsafe_allow_html=True)
+    st.markdown(
+        '<p class="hero-subtitle">'
+        'Paste any news article below and let our AI determine its authenticity in seconds. '
+        'Powered by advanced NLP and machine learning.'
+        '</p>',
+        unsafe_allow_html=True,
+    )
+    st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+
+    # Feature cards row
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.markdown("""
+        <div class="feature-card">
+            <span class="feature-icon">🎯</span>
+            <div class="feature-title">99% Accuracy</div>
+            <div class="feature-desc">State-of-the-art classification precision</div>
