@@ -79,3 +79,16 @@ def _demo_predict(text: str) -> dict:
     if real_prob >= fake_prob:
         label = "REAL"
         confidence = real_prob
+    else:
+        label = "FAKE"
+        confidence = fake_prob
+
+    return {
+        "label": label,
+        "confidence": confidence,
+        "probabilities": {
+            "FAKE": fake_prob,
+            "REAL": real_prob,
+        },
+    }
+
