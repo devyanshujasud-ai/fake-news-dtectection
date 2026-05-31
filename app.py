@@ -1568,3 +1568,31 @@ elif "Dashboard" in page:
             yaxis_title="Count",
             barmode="overlay",
             height=420,
+            legend=dict(
+                bgcolor="rgba(12,18,32,0.8)",
+                bordercolor="rgba(100,160,255,0.12)",
+                font=dict(family="Inter"),
+            ),
+        )
+        st.plotly_chart(dark_fig(fig), use_container_width=True)
+
+        # Word count stats
+        wc1, wc2, wc3, wc4 = st.columns(4)
+        with wc1:
+            st.markdown('<div class="metric-card"><div class="metric-value" style="-webkit-text-fill-color:#10b981;">548</div><div class="metric-label">Avg. Words (Real)</div></div>', unsafe_allow_html=True)
+        with wc2:
+            st.markdown('<div class="metric-card"><div class="metric-value" style="-webkit-text-fill-color:#ef4444;">412</div><div class="metric-label">Avg. Words (Fake)</div></div>', unsafe_allow_html=True)
+        with wc3:
+            st.markdown('<div class="metric-card"><div class="metric-value">15,892</div><div class="metric-label">Max Length</div></div>', unsafe_allow_html=True)
+        with wc4:
+            st.markdown('<div class="metric-card"><div class="metric-value">23</div><div class="metric-label">Min Length</div></div>', unsafe_allow_html=True)
+
+        # Sentiment distribution
+        st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+        st.markdown('<p class="section-header">💬 Sentiment Distribution</p>', unsafe_allow_html=True)
+
+        sentiments = ["Positive", "Neutral", "Negative"]
+        real_sent = [35, 45, 20]
+        fake_sent = [15, 25, 60]
+
+        fig = go.Figure()
