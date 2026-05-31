@@ -110,3 +110,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
 [data-testid="stSidebar"]::before {
     content: '';
     position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, var(--accent-cyan), var(--accent-purple), transparent);
+    opacity: 0.3;
+}
+
+[data-testid="stSidebar"] .stMarkdown p,
+[data-testid="stSidebar"] .stRadio label span {
+    color: var(--text-primary) !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Sidebar radio buttons */
+[data-testid="stSidebar"] .stRadio > div {
+    gap: 2px !important;
+}
+[data-testid="stSidebar"] .stRadio > div > label {
+    background: rgba(15, 23, 42, 0.4) !important;
+    border: 1px solid transparent !important;
+    border-radius: 12px !important;
+    padding: 10px 16px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    margin: 2px 0 !important;
+}
+[data-testid="stSidebar"] .stRadio > div > label:hover {
+    background: rgba(0, 212, 255, 0.08) !important;
