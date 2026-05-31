@@ -11,10 +11,7 @@ Featuring a premium, custom-styled glassmorphism Streamlit interface, the system
 
 ---
 
-## 🌐 Live Demo
 
-Experience the live, interactive deployment here:  
-👉 **[Fake News Detection Streamlit Application](https://fake-newsdetectionsystem.streamlit.app/)**
 
 ---
 
