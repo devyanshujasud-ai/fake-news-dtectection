@@ -306,3 +306,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
     -webkit-text-fill-color: transparent;
     line-height: 1.1;
 }
+.metric-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 6px;
+    font-weight: 600;
+}
+
+/* ── Confidence bar ────────────────────────────────────────────────────────── */
+.confidence-bar-bg {
+    width: 100%;
+    height: 14px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 7px;
+    margin-top: 14px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.confidence-bar-fill {
+    height: 100%;
+    border-radius: 7px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+.confidence-bar-fill::after {
+    content: '';
+    position: absolute;
