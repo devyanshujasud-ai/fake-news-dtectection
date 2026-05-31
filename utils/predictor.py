@@ -38,3 +38,17 @@ def _clean_text(text: str) -> str:
 # ---------------------------------------------------------------------------
 _FAKE_KEYWORDS = [
     "shocking", "unbelievable", "secret", "conspiracy", "coverup",
+    "hoax", "exposed", "they don't want you to know", "breaking",
+    "urgent", "bombshell", "leaked", "banned", "censored",
+    "miracle", "cure", "aliens", "illuminati", "deep state",
+]
+
+def _demo_predict(text: str) -> dict:
+    """Generate a realistic-looking prediction based on text content."""
+    cleaned = _clean_text(text)
+    if not cleaned:
+        return {"label": "UNKNOWN", "confidence": 0.0,
+                "probabilities": {"REAL": 0.0, "FAKE": 0.0}}
+
+    # Count fake-sounding keywords
+    lower = text.lower()
