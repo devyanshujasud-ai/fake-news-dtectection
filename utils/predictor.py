@@ -25,3 +25,16 @@ except Exception:
 # Text helpers
 # ---------------------------------------------------------------------------
 def _clean_text(text: str) -> str:
+    """Basic text cleaning: lowercase, strip URLs, special chars."""
+    text = text.lower()
+    text = re.sub(r"http\S+|www\.\S+", "", text)          # remove URLs
+    text = re.sub(r"[^a-zA-Z\s]", "", text)                # keep letters only
+    text = re.sub(r"\s+", " ", text).strip()                # collapse whitespace
+    return text
+
+
+# ---------------------------------------------------------------------------
+# Demo mode prediction (deterministic based on text hash)
+# ---------------------------------------------------------------------------
+_FAKE_KEYWORDS = [
+    "shocking", "unbelievable", "secret", "conspiracy", "coverup",
