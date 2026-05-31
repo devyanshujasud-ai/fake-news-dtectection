@@ -1232,3 +1232,31 @@ elif "URL" in page:
         <p class="section-sub" style="margin-bottom:0;">
             Our URL analyzer uses the <strong>newspaper3k</strong> library to extract article content from most major news websites.
             Simply paste any article URL above and click analyze. The system will automatically download, parse, and classify the article content.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PAGE: MODEL COMPARISON
+# ═══════════════════════════════════════════════════════════════════════════
+elif "Comparison" in page:
+    st.markdown('<h1 class="hero-title">📊 Model Comparison</h1>', unsafe_allow_html=True)
+    st.markdown(
+        '<p class="hero-subtitle">'
+        'Compare multiple ML models side-by-side with detailed performance metrics'
+        '</p>',
+        unsafe_allow_html=True,
+    )
+    st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+
+    # Generate demo comparison data
+    if st.session_state.comparison_results is None:
+        # Pre-load demo comparison results
+        np.random.seed(42)
+        demo_models = {
+            "Logistic Regression": {
+                "accuracy": 0.9634,
+                "precision": 0.9612,
+                "recall": 0.9658,
+                "f1": 0.9635,
