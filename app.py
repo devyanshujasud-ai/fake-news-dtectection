@@ -755,3 +755,31 @@ if "comparison_results" not in st.session_state:
 # ---------------------------------------------------------------------------
 # Pre-populate demo data on first load
 # ---------------------------------------------------------------------------
+_DEMO_ARTICLES = [
+    {
+        "text": "NASA confirms discovery of water ice beneath the surface of Mars, suggesting conditions that could support microbial life.",
+        "label": "REAL",
+        "confidence": 0.937,
+        "source": "Text",
+    },
+    {
+        "text": "BREAKING: Secret underground city discovered beneath the Sahara desert, government officials deny its existence despite leaked satellite photos.",
+        "label": "FAKE",
+        "confidence": 0.912,
+        "source": "Text",
+    },
+    {
+        "text": "World Health Organization announces global malaria cases dropped by 27% over the past decade due to improved treatment access.",
+        "label": "REAL",
+        "confidence": 0.891,
+        "source": "URL",
+    },
+    {
+        "text": "SHOCKING: Popular smartphone brand secretly recording all user conversations and selling data to foreign governments.",
+        "label": "FAKE",
+        "confidence": 0.945,
+        "source": "Text",
+    },
+    {
+        "text": "European Space Agency successfully deploys new climate monitoring satellite to track global temperature changes in real-time.",
+        "label": "REAL",
