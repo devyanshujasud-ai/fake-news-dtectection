@@ -1,4 +1,4 @@
-# 🛡️ Premium Fake News Detection System
+# 🛡️ fake-news-dtectection
 
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Streamlit App](https://static.streamlit.io/badge-svg.svg)](https://fake-newsdetectionsystem.streamlit.app/)
@@ -176,8 +176,7 @@ Open your browser and navigate to `http://localhost:8501`.
 
 ## 👤 Author & Contributions
 
-* **Muqadas Ejaz** - *Original Pipeline Design, AI/ML Engineering & GenAI* - [LinkedIn](https://www.linkedin.com/in/muqadasejaz/) | [GitHub](https://github.com/muqadasejaz)
-* **Devyanshu Jasud** - *Repository Maintenance, Integration & Hosting* - [GitHub](https://github.com/devyanshujasud-ai)
+* **Devyanshu Jasud** - *Creator, AI/ML Engineering & Integration* - [GitHub](https://github.com/devyanshujasud-ai)
 
 Contributions, feature ideas, and issues are always welcome! Feel free to open a Pull Request or create a GitHub issue.
 
