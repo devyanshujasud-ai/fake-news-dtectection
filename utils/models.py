@@ -170,3 +170,16 @@ def train_and_compare(
             "confusion_matrix": confusion_matrix(y_test, y_pred),
             "roc_fpr": fpr,
             "roc_tpr": tpr,
+            "roc_auc": roc_auc,
+            "classification_report": classification_report(y_test, y_pred, target_names=["FAKE", "REAL"]),
+            "y_pred": y_pred,
+        }
+
+    return {
+        "vectorizer": tfidf,
+        "X_test": X_test,
+        "y_test": y_test,
+        "results": results,
+    }
+
+
