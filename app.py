@@ -1175,3 +1175,31 @@ elif "URL" in page:
                 """, unsafe_allow_html=True)
 
                 label = result["label"]
+                confidence = result["confidence"]
+                proba = result["probabilities"]
+
+                add_to_history(result.get("title", url_input), label, confidence, "URL")
+
+                if label == "REAL":
+                    st.markdown(f"""
+                    <div class="result-real">
+                        <div class="result-label real">✅ REAL NEWS</div>
+                        <div class="result-confidence">Confidence: {confidence:.1%}</div>
+                        <div class="confidence-bar-bg">
+                            <div class="confidence-bar-fill real" style="width:{confidence*100:.1f}%"></div>
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+                else:
+                    st.markdown(f"""
+                    <div class="result-fake">
+                        <div class="result-label fake">🚫 FAKE NEWS</div>
+                        <div class="result-confidence">Confidence: {confidence:.1%}</div>
+                        <div class="confidence-bar-bg">
+                            <div class="confidence-bar-fill fake" style="width:{confidence*100:.1f}%"></div>
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+                # Probability bar chart
+                fig = go.Figure(go.Bar(
