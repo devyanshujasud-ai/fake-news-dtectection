@@ -130,3 +130,16 @@ def train_and_compare(
         if selected_models is None or k in selected_models
     }
     total_steps = len(models_to_train) + 1  # +1 for vectorisation
+
+    # --- Vectorise --------------------------------------------------------
+    if progress_callback:
+        progress_callback(0, total_steps, "Vectorizing text with TF-IDF…")
+
+    tfidf = TfidfVectorizer(max_features=max_features, stop_words="english")
+    X = tfidf.fit_transform(df["text"])
+    y = df["label"].values
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=test_size, random_state=42, stratify=y
+    )
+
