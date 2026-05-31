@@ -951,3 +951,31 @@ if "Home" in page:
             <span class="feature-icon">🎯</span>
             <div class="feature-title">99% Accuracy</div>
             <div class="feature-desc">State-of-the-art classification precision</div>
+        </div>
+        """, unsafe_allow_html=True)
+    with col2:
+        st.markdown("""
+        <div class="feature-card">
+            <span class="feature-icon">⚡</span>
+            <div class="feature-title">TF-IDF Engine</div>
+            <div class="feature-desc">Advanced text vectorization pipeline</div>
+        </div>
+        """, unsafe_allow_html=True)
+    with col3:
+        st.markdown("""
+        <div class="feature-card">
+            <span class="feature-icon">🧠</span>
+            <div class="feature-title">GBC Model</div>
+            <div class="feature-desc">Gradient Boosting ensemble classifier</div>
+        </div>
+        """, unsafe_allow_html=True)
+    with col4:
+        st.markdown("""
+        <div class="feature-card">
+            <span class="feature-icon">🔬</span>
+            <div class="feature-title">NLP Powered</div>
+            <div class="feature-desc">Deep natural language understanding</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("")
