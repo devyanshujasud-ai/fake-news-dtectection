@@ -194,3 +194,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
 }
 .hero-subtitle {
     font-size: 1.15rem;
+    color: var(--text-secondary);
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 30px;
+    animation: fadeInDown 1s ease-out;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
+}
+
+/* ── Section header ────────────────────────────────────────────────────────── */
+.section-header {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+.section-sub {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 22px;
+    line-height: 1.5;
+}
+
+/* ── Result cards ──────────────────────────────────────────────────────────── */
+.result-real {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(52, 211, 153, 0.05));
+    border: 1px solid rgba(16, 185, 129, 0.35);
