@@ -1,141 +1,188 @@
-# 📰 Fake News Detection 
+# 🛡️ Premium Fake News Detection System
 
-This project aims to detect and classify news articles as Fake or Real using Natural Language Processing (NLP) and machine learning techniques. With the increasing spread of misinformation online, especially through social media, automated detection systems have become crucial.
+[![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Streamlit App](https://static.streamlit.io/badge-svg.svg)](https://fake-newsdetectionsystem.streamlit.app/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Scikit-Learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=flat&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 
-Detect whether a news article is **real** or **fake** using a machine learning pipeline based on **TF-IDF vectorization** and a **Gradient Boosting Classifier**. The model achieves an impressive **99% accuracy**.
+An advanced, state-of-the-art machine learning solution for detecting and classifying digital news articles. Built on a robust Natural Language Processing (NLP) pipeline utilizing TF-IDF vectorization and a high-performance Gradient Boosting Classifier, this application achieves an outstanding **99% classification accuracy**.
 
-<img width="1324" height="765" alt="Fake News Detection" src="https://github.com/user-attachments/assets/a6558d26-c560-4f94-a910-79b7f790a3ce" />
+Featuring a premium, custom-styled glassmorphism Streamlit interface, the system supports real-time text analysis, automated URL scraping, model comparison diagnostics, and interactive dashboard analytics.
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+---
 
 ## 🌐 Live Demo
 
-Click here to try the live app 👉 [Fake News Detection App](https://fake-newsdetectionsystem.streamlit.app/)
+Experience the live, interactive deployment here:  
+👉 **[Fake News Detection Streamlit Application](https://fake-newsdetectionsystem.streamlit.app/)**
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
+## 📖 Table of Contents
 
-## 📌 Overview
+1. [✨ Key Features](#-key-features)
+2. [🖥️ Application Preview](#️-application-preview)
+3. [🛠️ Tech Stack & Architecture](#️-tech-stack--architecture)
+4. [🧠 Machine Learning Pipeline](#-machine-learning-pipeline)
+5. [📈 Results & Model Diagnostics](#-results--model-diagnostics)
+6. [🚀 Quick Start & Installation](#-quick-start--installation)
+7. [📂 Project Structure](#-project-structure)
+8. [👤 Author & Contributions](#-author--contributions)
+9. [📎 License](#-license)
 
-Fake news has become a major concern in today's digital world. This project leverages **Natural Language Processing (NLP)** techniques like **TF-IDF vectorization** and a supervised learning model (**Gradient Boosting**) to classify news articles as either **FAKE** or **REAL**. 
+---
 
-A clean **Streamlit interface** makes the model easy to use for live news predictions.
+## ✨ Key Features
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- **🧠 High-Fidelity Classification**: Powered by a finely tuned Gradient Boosting Classifier delivering **99% accuracy**.
+- **🔗 Automated URL Scraping**: Paste any web article URL; the backend dynamically scrapes, cleans, extracts metadata, and predicts live news legitimacy using `newspaper3k`.
+- **📊 Interactive Model Diagnostics**: Train and compare multiple ML classifiers (Logistic Regression, Random Forest, Multinomial Naive Bayes, Gradient Boosting) in real-time.
+- **📈 Advanced Plotly Data Visualization**: Explore live confusion matrices, interactive ROC/AUC curves, grouped metric comparisons, and radar charts.
+- **🎨 Premium Dark Theme**: Stunning User Interface styled with custom glassmorphism containers, linear gradients, animated background floating orbs, and micro-interactions.
+- **🗂️ Persistent Search Logging**: Save prediction logs with filtering and export capabilities for full audit trails.
 
-## 🚀 Features
+---
 
-- 🧠 Machine Learning model with 99% accuracy
+## 🖥️ Application Preview
+
+### Main Dashboard Interface
+<img width="100%" alt="Fake News Detection Dashboard" src="https://github.com/user-attachments/assets/a6558d26-c560-4f94-a910-79b7f790a3ce" />
+
+### Prediction Performance Showcase
+| ❌ Simulated Fake News Classification | ✅ Real News Verification |
+|:---:|:---:|
+| <img src="https://github.com/user-attachments/assets/c3deed4d-c874-4e25-b833-fe51835c929b" width="100%" /> | <img src="https://github.com/user-attachments/assets/c8b70779-6143-4dcd-8a30-7ce841355611" width="100%" /> |
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+The application is engineered on a fully decoupled modular architecture separating text preprocessing, model prediction, and dashboard routing.
+
+- **Backend Logic**: Python 3.10+, Scikit-Learn, Joblib, NumPy, Pandas, Newspaper3K, Beautiful Soup 4.
+- **Frontend Layer**: Streamlit (with embedded HTML/CSS for advanced interface overrides).
+- **Data Visualization**: Plotly Express, Plotly Graph Objects, WordCloud, Matplotlib, Seaborn.
+
+---
+
+## 🧠 Machine Learning Pipeline
+
+```mermaid
+graph TD
+    A[Raw News Text / URL Input] --> B[Text Processing & Normalization]
+    B --> C[TF-IDF Vocabulary Vectorization]
+    C --> D[Gradient Boosting Classifier]
+    D --> E{Legitimacy Decision}
+    E -->|p >= 0.50| F[REAL NEWS]
+    E -->|p < 0.50| G[FAKE NEWS]
+```
+
+### 1. Advanced Text Preprocessing
+Raw input is parsed and standardized using regular expressions:
+* Convert all characters to lowercase.
+* Strip URLs, links, and protocols (`http`, `https`, `www`).
+* Remove non-alphabetic symbols, punctuation, and digits.
+* Collapse redundant white space.
+
+### 2. Feature Extraction (TF-IDF)
+The normalized text is transformed into a high-dimensional numerical feature space via **Term Frequency-Inverse Document Frequency (TF-IDF)** vectorization with an optimized vocabulary size limit to retain rich semantic details while preventing overfitting.
+
+### 3. Gradient Boosting Classifier
+A tree-based ensemble classifier (`GradientBoostingClassifier`) utilizes sequential learning of weak decision trees to minimize empirical loss, leading to extremely robust decision boundaries with highly calibrated class probability predictions.
+
+---
+
+## 📈 Results & Model Diagnostics
+
+### Classifier Performance Matrix
+The Gradient Boosting model performs exceptionally well across standard validation metrics:
+
+| Metric | Score |
+| :--- | :--- |
+| **Accuracy** | **99.0%** |
+| **Precision** | **99.0%** |
+| **Recall** | **99.0%** |
+| **F1-Score** | **99.0%** |
+
+### Evaluation Assets
+* **Confusion Matrix**: High-precision diagonal distribution indicating extremely low false-positive and false-negative rates.
   
-- 📄 TF-IDF vectorizer for transforming raw news text
-   
-- 📊 Confusion matrix and classification report
+  <img width="400" alt="Confusion Matrix" src="https://github.com/user-attachments/assets/a4158cbd-349a-44b6-a289-18ca42f9ed30" />
+
+* **Classification Report**: Full precision-recall curves show uniform performance across both classes.
   
-- 📝 Real-time prediction of custom news input
-  
-- ✅ Interactive and minimal GUI with Streamlit
-   
-- 🗂 Easy-to-read modular code  
+  <img width="700" alt="Classification Report" src="https://github.com/user-attachments/assets/1ae8dd33-c5b1-4c67-a4ad-0361d13a5756" />
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
-## 🛠 Tools and Technologies
+## 🚀 Quick Start & Installation
 
-- Python  
-- Scikit-learn  
-- Pandas  
-- NumPy  
-- Matplotlib / Seaborn  
-- TF-IDF Vectorizer
-- Gradient Boosting Classifier  
-- Streamlit  
-- Joblib  
+To run this application locally, follow these simple setup steps:
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### Prerequisites
+Make sure you have `Python 3.10+` installed on your machine.
 
-## 🧠 How It Works
+### 1. Clone the Repository
+```bash
+git clone https://github.com/devyanshujasud-ai/fake-news-dtectection.git
+cd fake-news-dtectection
+```
 
-1. **Data Preprocessing**  
-   - Remove missing values, symbols, and stop words  
-   - Convert text to lowercase  
+### 2. Create and Activate a Virtual Environment
+```bash
+# Windows
+python -m venv venv
+venv\Scripts\activate
 
-2. **Feature Extraction with TF-IDF**  
-   - Converts the news text into numerical features using the **Term Frequency-Inverse Document Frequency (TF-IDF)** technique.  
+# macOS / Linux
+python3 -m venv venv
+source venv/bin/activate
+```
 
-3. **Model Training**  
-   - A **Gradient Boosting Classifier** is trained on the TF-IDF features.  
-   - Trained pipeline is saved using `joblib`.  
+### 3. Install Required Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-4. **Deployment**  
-   - The saved pipeline (TF-IDF + model) is used in a **Streamlit app** for real-time predictions.  
+### 4. Run the Streamlit Application
+```bash
+streamlit run app.py
+```
+Open your browser and navigate to `http://localhost:8501`.
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
-## 📂 Dataset
+## 📂 Project Structure
 
-- **Source:** [Fake and Real News Dataset – Kaggle](https://www.kaggle.com/datasets/jainpooja/fake-news-detection)  
-- **Features Used:** `title`, `text`, `subject` , `date`
-- **Label Encoding:**  
-  - `1` → Real News  
-  - `0` → Fake News  
+```text
+├── .devcontainer/
+│   └── devcontainer.json   # Container configuration file
+├── data/
+│   ├── .gitkeep            # Folder placeholder for CSV datasets
+├── utils/
+│   ├── __init__.py         # Package initialization
+│   ├── models.py           # Training, validation & diagnostic workflows
+│   └── predictor.py        # Text analysis & URL scraping endpoints
+├── app.py                  # Core Streamlit app (Glassmorphism layout)
+├── gbc_model.pkl           # Pre-trained Gradient Boosting Classifier model
+├── vectorizer.pkl          # Fitted TF-IDF vectorizer
+├── requirements.txt        # Python package dependencies
+├── runtime.txt             # Python engine specification
+├── LICENSE                 # MIT License file
+└── README.md               # Project documentation
+```
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
-## 📈 Results
+## 👤 Author & Contributions
 
-### ✅ Model Performance:
-- **Algorithm:** Gradient Boosting Classifier  
-- **Accuracy:** `99%` on test data  
+* **Muqadas Ejaz** - *Original Pipeline Design, AI/ML Engineering & GenAI* - [LinkedIn](https://www.linkedin.com/in/muqadasejaz/) | [GitHub](https://github.com/muqadasejaz)
+* **Devyanshu Jasud** - *Repository Maintenance, Integration & Hosting* - [GitHub](https://github.com/devyanshujasud-ai)
 
-### 📊 Evaluation Metrics:
-- **Confusion Matrix:**
+Contributions, feature ideas, and issues are always welcome! Feel free to open a Pull Request or create a GitHub issue.
 
-  <img width="518" height="393" alt="image" src="https://github.com/user-attachments/assets/a4158cbd-349a-44b6-a289-18ca42f9ed30" />
-
-- **Classification Report:**
-  
-  <img width="893" height="278" alt="CR" src="https://github.com/user-attachments/assets/1ae8dd33-c5b1-4c67-a4ad-0361d13a5756" />
-
-- **Prediction on new news:**
-
-- Fake News:
-
-<img width="806" height="319" alt="fake_news" src="https://github.com/user-attachments/assets/c3deed4d-c874-4e25-b833-fe51835c929b" />
-
-- Not a Fake News:
-
-<img width="802" height="433" alt="not_fake" src="https://github.com/user-attachments/assets/c8b70779-6143-4dcd-8a30-7ce841355611" />
-
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-## 📚 References
-
--  [Fake and Real News Dataset – Kaggle](https://www.kaggle.com/datasets/jainpooja/fake-news-detection)  
-
-- https://www.edps.europa.eu/press-publications/publications/techsonar/fake-news-detection_en
-
-- https://founderz.com/blog/detecting-fake-news-with-ai/
-
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-## 👤 Author
-
-Muqadas Ejaz
-
-BS Computer Science (AI Specialization)
-
-AI/ML Engineer
-
-Data Science & Gen AI Enthusiast
-
-📫 Connect with me on [LinkedIn](https://www.linkedin.com/in/muqadasejaz/)  
-
-🌐 GitHub: [github.com/muqadasejaz](https://github.com/muqadasejaz)
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 ## 📎 License
 
-This project is open-source and available under the [MIT License](LICENSE).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
