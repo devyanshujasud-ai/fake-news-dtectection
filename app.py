@@ -1316,3 +1316,31 @@ elif "Comparison" in page:
                 "f1": 0.9722,
                 "roc_auc": 0.9958,
                 "roc_fpr": np.array([0.0, 0.005, 0.01, 0.03, 0.07, 0.1, 0.15, 0.4, 1.0]),
+                "roc_tpr": np.array([0.0, 0.80, 0.92, 0.96, 0.98, 0.99, 0.993, 0.999, 1.0]),
+                "confusion_matrix": np.array([[4800, 140], [139, 4921]]),
+                "classification_report": (
+                    "              precision    recall  f1-score   support\n\n"
+                    "        FAKE       0.97      0.97      0.97      4940\n"
+                    "        REAL       0.97      0.97      0.97      5060\n\n"
+                    "    accuracy                           0.97     10000\n"
+                    "   macro avg       0.97      0.97      0.97     10000\n"
+                    "weighted avg       0.97      0.97      0.97     10000\n"
+                ),
+            },
+        }
+        st.session_state.comparison_results = {"results": demo_models}
+
+    # Display results
+    res = st.session_state.comparison_results["results"]
+
+    st.markdown('<p class="section-header">🏆 Results Overview</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-sub">Performance metrics across all evaluated models</p>', unsafe_allow_html=True)
+
+    # Metric cards for each model
+    cols = st.columns(len(res))
+    best_model = max(res, key=lambda k: res[k]["accuracy"])
+    for col, (name, metrics) in zip(cols, res.items()):
+        with col:
+            badge = "🏆 " if name == best_model else ""
+            acc_color = "#10b981" if metrics["accuracy"] >= 0.95 else "#f59e0b" if metrics["accuracy"] >= 0.85 else "#ef4444"
+            crown = '<div style="font-size:0.7rem;color:#f59e0b;margin-bottom:4px;font-weight:700;">👑 BEST MODEL</div>' if name == best_model else ""
