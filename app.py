@@ -1091,3 +1091,31 @@ if "Home" in page:
                         "thickness": 0.8,
                         "value": proba["REAL"] * 100,
                     },
+                },
+            ))
+            fig.update_layout(
+                height=300,
+                paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="rgba(0,0,0,0)",
+                font=dict(family="Inter"),
+            )
+            st.plotly_chart(fig, use_container_width=True)
+
+    # Quick examples section
+    st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">💡 How It Works</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-sub">Our AI pipeline processes text through multiple stages</p>', unsafe_allow_html=True)
+
+    hw1, hw2, hw3 = st.columns(3)
+    with hw1:
+        st.markdown("""
+        <div class="glass-card" style="text-align:center;">
+            <div style="font-size:2rem;margin-bottom:10px;">📥</div>
+            <div style="font-size:0.95rem;font-weight:700;color:#f1f5f9;margin-bottom:6px;">1. Input Text</div>
+            <div style="font-size:0.82rem;color:#64748b;">Paste any news article or enter a URL for analysis</div>
+        </div>
+        """, unsafe_allow_html=True)
+    with hw2:
+        st.markdown("""
+        <div class="glass-card" style="text-align:center;">
+            <div style="font-size:2rem;margin-bottom:10px;">🔄</div>
