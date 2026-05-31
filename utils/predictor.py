@@ -106,3 +106,16 @@ def predict_news(text: str) -> dict:
         label   – "REAL" | "FAKE"
         confidence – float 0-1 (probability of the predicted class)
         probabilities – dict {"REAL": float, "FAKE": float}
+    """
+    if _demo_mode:
+        return _demo_predict(text)
+
+    cleaned = _clean_text(text)
+    if not cleaned:
+        return {"label": "UNKNOWN", "confidence": 0.0,
+                "probabilities": {"REAL": 0.0, "FAKE": 0.0}}
+
+    vec = _vectorizer.transform([cleaned])
+    pred = _model.predict(vec)[0]
+    proba = _model.predict_proba(vec)[0]
+
