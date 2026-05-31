@@ -586,3 +586,32 @@ div[data-testid="stDownloadButton"] > button:hover {
 [data-testid="stMultiSelect"] > div > div {
     background: rgba(12, 18, 32, 0.7) !important;
     border: 1px solid var(--border-glass) !important;
+    border-radius: 14px !important;
+}
+
+/* ── Tab styling ───────────────────────────────────────────────────────────── */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    background: transparent;
+    border-bottom: none !important;
+}
+.stTabs [data-baseweb="tab"] {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-glass) !important;
+    border-radius: 12px !important;
+    color: var(--text-secondary) !important;
+    font-family: 'Inter', sans-serif !important;
+    padding: 10px 22px !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    transition: all 0.3s ease !important;
+}
+.stTabs [data-baseweb="tab"]:hover {
+    background: rgba(0, 212, 255, 0.06) !important;
+    border-color: rgba(0, 212, 255, 0.15) !important;
+}
+.stTabs [aria-selected="true"] {
+    background: linear-gradient(135deg, rgba(0,212,255,0.12), rgba(139,92,246,0.12)) !important;
+    border-color: var(--accent-cyan) !important;
+    color: var(--accent-cyan) !important;
+    box-shadow: 0 0 16px rgba(0, 212, 255, 0.08) !important;
