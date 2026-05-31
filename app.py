@@ -1792,3 +1792,32 @@ elif "History" in page:
                     ),
                     textinfo="label+value",
                     textfont=dict(color="#f1f5f9", size=13, family="Inter"),
+                ))
+                fig.update_layout(
+                    title="Session Distribution",
+                    height=360,
+                    showlegend=False,
+                )
+                st.plotly_chart(dark_fig(fig), use_container_width=True)
+
+            with chart2:
+                # Source distribution
+                text_count = sum(1 for h in st.session_state.history if h["source"] == "Text")
+                url_count = sum(1 for h in st.session_state.history if h["source"] == "URL")
+                fig = go.Figure(go.Pie(
+                    labels=["Text Input", "URL Analysis"],
+                    values=[text_count, url_count],
+                    hole=0.65,
+                    marker=dict(
+                        colors=["#00d4ff", "#8b5cf6"],
+                        line=dict(color="#06090f", width=3),
+                    ),
+                    textinfo="label+value",
+                    textfont=dict(color="#f1f5f9", size=13, family="Inter"),
+                ))
+                fig.update_layout(
+                    title="Input Source Distribution",
+                    height=360,
+                    showlegend=False,
+                )
+                st.plotly_chart(dark_fig(fig), use_container_width=True)
