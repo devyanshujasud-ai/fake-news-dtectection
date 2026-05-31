@@ -1344,3 +1344,31 @@ elif "Comparison" in page:
             badge = "🏆 " if name == best_model else ""
             acc_color = "#10b981" if metrics["accuracy"] >= 0.95 else "#f59e0b" if metrics["accuracy"] >= 0.85 else "#ef4444"
             crown = '<div style="font-size:0.7rem;color:#f59e0b;margin-bottom:4px;font-weight:700;">👑 BEST MODEL</div>' if name == best_model else ""
+            st.markdown(f"""
+            <div class="metric-card">
+                {crown}
+                <div style="font-size:0.82rem;font-weight:700;color:#94a3b8;margin-bottom:10px;">{badge}{name}</div>
+                <div class="metric-value" style="-webkit-text-fill-color:{acc_color};font-size:2.4rem;">{metrics['accuracy']:.1%}</div>
+                <div class="metric-label">Accuracy</div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    st.markdown("")
+
+    # Comparison table
+    comp_df = pd.DataFrame({
+        name: {
+            "Accuracy": f"{m['accuracy']:.2%}",
+            "Precision": f"{m['precision']:.2%}",
+            "Recall": f"{m['recall']:.2%}",
+            "F1 Score": f"{m['f1']:.2%}",
+            "ROC AUC": f"{m['roc_auc']:.4f}",
+        }
+        for name, m in res.items()
+    })
+    st.dataframe(comp_df, use_container_width=True)
+
+    st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+
+    # Charts
+    tab1, tab2, tab3 = st.tabs(["📊 Accuracy Comparison", "📈 ROC Curves", "🔢 Confusion Matrices"])
