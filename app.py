@@ -222,3 +222,31 @@ html, body, [data-testid="stAppViewContainer"], .main {
 .result-real {
     background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(52, 211, 153, 0.05));
     border: 1px solid rgba(16, 185, 129, 0.35);
+    border-radius: 20px;
+    padding: 32px 36px;
+    text-align: center;
+    animation: slideUp 0.5s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+.result-real::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #10b981, #34d399, transparent);
+}
+.result-fake {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(248, 113, 113, 0.05));
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    border-radius: 20px;
+    padding: 32px 36px;
+    text-align: center;
+    animation: slideUp 0.5s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+.result-fake::before {
+    content: '';
