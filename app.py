@@ -1680,3 +1680,31 @@ elif "Dashboard" in page:
                 ))
             fig.update_layout(
                 title="All Metrics Comparison",
+                yaxis=dict(title="Score (%)", range=[85, 105]),
+                barmode="group",
+                height=450,
+                legend=dict(
+                    bgcolor="rgba(12,18,32,0.8)",
+                    bordercolor="rgba(100,160,255,0.12)",
+                ),
+            )
+            st.plotly_chart(dark_fig(fig), use_container_width=True)
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PAGE: HISTORY
+# ═══════════════════════════════════════════════════════════════════════════
+elif "History" in page:
+    st.markdown('<h1 class="hero-title">📜 Prediction History</h1>', unsafe_allow_html=True)
+    st.markdown(
+        '<p class="hero-subtitle">'
+        'View all predictions made during this session'
+        '</p>',
+        unsafe_allow_html=True,
+    )
+    st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+
+    if not st.session_state.history:
+        st.markdown("""
+        <div class="glass-card" style="text-align:center; padding:60px 30px;">
+            <div style="font-size:4rem; margin-bottom:16px; opacity:0.6;">🔍</div>
