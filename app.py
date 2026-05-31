@@ -1372,3 +1372,31 @@ elif "Comparison" in page:
 
     # Charts
     tab1, tab2, tab3 = st.tabs(["📊 Accuracy Comparison", "📈 ROC Curves", "🔢 Confusion Matrices"])
+
+    with tab1:
+        names = list(res.keys())
+        accs = [res[n]["accuracy"] * 100 for n in names]
+        colors = ["#00d4ff", "#8b5cf6", "#10b981", "#f59e0b"][:len(names)]
+        fig = go.Figure(go.Bar(
+            x=names, y=accs,
+            marker=dict(
+                color=colors,
+                line=dict(width=0),
+            ),
+            text=[f"{a:.1f}%" for a in accs],
+            textposition="outside",
+            textfont=dict(color="#f1f5f9", size=14, family="Inter"),
+        ))
+        fig.update_layout(
+            title="Model Accuracy Comparison",
+            yaxis=dict(title="Accuracy (%)", range=[85, 105]),
+            height=420,
+        )
+        st.plotly_chart(dark_fig(fig), use_container_width=True)
+
+    with tab2:
+        fig = go.Figure()
+        line_colors = ["#00d4ff", "#8b5cf6", "#10b981", "#f59e0b"]
+        for idx, (name, metrics) in enumerate(res.items()):
+            fig.add_trace(go.Scatter(
+                x=metrics["roc_fpr"], y=metrics["roc_tpr"],
