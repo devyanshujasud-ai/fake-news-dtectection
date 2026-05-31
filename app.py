@@ -1456,3 +1456,31 @@ elif "Comparison" in page:
 # ═══════════════════════════════════════════════════════════════════════════
 elif "Dashboard" in page:
     st.markdown('<h1 class="hero-title">📈 Analytics Dashboard</h1>', unsafe_allow_html=True)
+    st.markdown(
+        '<p class="hero-subtitle">'
+        'Dataset insights, model performance metrics, and visual analytics'
+        '</p>',
+        unsafe_allow_html=True,
+    )
+    st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+
+    # Generate demo dataset stats
+    demo_stats = {
+        "total": 44898,
+        "real": 21417,
+        "fake": 23481,
+        "avg_length": 4890,
+    }
+
+    # Stats row
+    st.markdown('<p class="section-header">📊 Dataset Overview</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-sub">Training data composition and statistics</p>', unsafe_allow_html=True)
+    s1, s2, s3, s4 = st.columns(4)
+    with s1:
+        st.markdown(f'<div class="metric-card"><div class="metric-value">{demo_stats["total"]:,}</div><div class="metric-label">Total Articles</div></div>', unsafe_allow_html=True)
+    with s2:
+        st.markdown(f'<div class="metric-card"><div class="metric-value" style="-webkit-text-fill-color:#10b981;">{demo_stats["real"]:,}</div><div class="metric-label">Real Articles</div></div>', unsafe_allow_html=True)
+    with s3:
+        st.markdown(f'<div class="metric-card"><div class="metric-value" style="-webkit-text-fill-color:#ef4444;">{demo_stats["fake"]:,}</div><div class="metric-label">Fake Articles</div></div>', unsafe_allow_html=True)
+    with s4:
+        st.markdown(f'<div class="metric-card"><div class="metric-value">{demo_stats["avg_length"]:,.0f}</div><div class="metric-label">Avg. Length (chars)</div></div>', unsafe_allow_html=True)
