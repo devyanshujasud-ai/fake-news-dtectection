@@ -1147,3 +1147,31 @@ elif "URL" in page:
     st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
 
     url_input = st.text_input(
+        "url_input",
+        placeholder="https://example.com/news-article",
+        label_visibility="collapsed",
+    )
+
+    analyze_btn = st.button("🌐  Analyze URL", use_container_width=True, key="analyze_url")
+
+    if analyze_btn:
+        if not url_input.strip():
+            st.warning("⚠️ Please enter a valid URL.")
+        else:
+            with st.spinner("🌐 Fetching and analyzing article…"):
+                from utils.predictor import predict_from_url
+                result = predict_from_url(url_input)
+
+            if result["label"] == "ERROR":
+                st.error(f"❌ Error: {result.get('error', 'Unknown error')}")
+            else:
+                # Article preview
+                st.markdown(f"""
+                <div class="url-preview">
+                    <h4>📄 {result.get('title', 'Untitled Article')}</h4>
+                    <p><strong>Authors:</strong> {', '.join(result.get('authors', [])) or 'Not detected'}</p>
+                    <p>{result.get('text', '')[:400]}…</p>
+                </div>
+                """, unsafe_allow_html=True)
+
+                label = result["label"]
