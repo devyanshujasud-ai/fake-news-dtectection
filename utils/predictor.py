@@ -146,3 +146,17 @@ def predict_from_url(url: str) -> dict:
         text    – extracted article body (first 5000 chars)
         authors – list of author names
     """
+    try:
+        from newspaper import Article
+
+        article = Article(url)
+        article.download()
+        article.parse()
+
+        title = article.title or ""
+        body = article.text or ""
+        authors = article.authors or []
+
+        if not body.strip():
+            return {
+                "label": "ERROR",
