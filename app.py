@@ -1764,3 +1764,31 @@ elif "History" in page:
                             🕐 {entry['time']}
                             <span class="nav-badge {source_badge}">{entry['source']}</span>
                         </div>
+                        <div style="font-size:0.88rem; color:#cbd5e1; line-height:1.5;">{entry['text']}</div>
+                    </div>
+                    <div style="text-align:right; padding:8px 16px; border-radius:12px; background:{label_bg};">
+                        <span style="font-size:1.15rem; font-weight:800; color:{label_color};">
+                            {label_icon} {entry['label']}
+                        </span>
+                        <div style="font-size:0.78rem; color:#94a3b8; margin-top:2px;">{entry['confidence']}</div>
+                    </div>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+        # Mini chart
+        if len(st.session_state.history) > 1:
+            st.markdown('<div class="glow-divider"></div>', unsafe_allow_html=True)
+
+            chart1, chart2 = st.columns(2)
+            with chart1:
+                fig = go.Figure(go.Pie(
+                    labels=["Real", "Fake"],
+                    values=[reals, fakes],
+                    hole=0.65,
+                    marker=dict(
+                        colors=["#10b981", "#ef4444"],
+                        line=dict(color="#06090f", width=3),
+                    ),
+                    textinfo="label+value",
+                    textfont=dict(color="#f1f5f9", size=13, family="Inter"),
