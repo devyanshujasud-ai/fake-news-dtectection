@@ -6,7 +6,6 @@
 
 An advanced, state-of-the-art machine learning solution for detecting and classifying digital news articles. Built on a robust Natural Language Processing (NLP) pipeline utilizing TF-IDF vectorization and a high-performance Gradient Boosting Classifier, this application achieves an outstanding **99% classification accuracy**.
 
-Featuring a premium, custom-styled glassmorphism Streamlit interface, the system supports real-time text analysis, automated URL scraping, model comparison diagnostics, and interactive dashboard analytics.
 
 ---
 
